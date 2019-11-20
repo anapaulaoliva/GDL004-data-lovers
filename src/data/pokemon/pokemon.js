@@ -1,4 +1,5 @@
 export default [{
+  //start of the bulbasaur object
   id: 1,
   num: '001',
   name: 'Bulbasaur',
@@ -29,6 +30,7 @@ export default [{
     num: '003',
     name: 'Venusaur',
   }],
+/*final of the bulbasaur object */
 }, {
   id: 2,
   num: '002',
