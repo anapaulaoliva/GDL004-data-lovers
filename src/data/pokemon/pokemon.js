@@ -1,5 +1,4 @@
 export default [{
-  //start of the bulbasaur object
   id: 1,
   num: '001',
   name: 'Bulbasaur',

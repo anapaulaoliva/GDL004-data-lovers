@@ -104,10 +104,18 @@ div.contenedor {
   padding: auto;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: transparent;
+  z-index: 1;
+  max-width: 100%;
+}
+
+div.filtrado {
+  position: relative;
+  padding: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   background-color: transparent;
   z-index: 1;
   max-width: 100%;
@@ -121,11 +129,6 @@ div.card{
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 5px 5px 5px #d2d2d2;
   border-radius: 20%;
-}
-div.margenCard{
- margin-left: auto;
- margin-right: auto;
- margin-bottom: auto;
 }
 .infoBoton{
 border: none;
