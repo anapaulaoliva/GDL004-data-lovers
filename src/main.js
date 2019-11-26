@@ -1,19 +1,15 @@
-/**
- * import POKEMON from './data/pokemon/pokemon.js'
- * import LoL from './data/lol/lol.js'
- * import POTTER from './data/potter/potter.js'
- */
-
-import  POKEMON  from './data/pokemon/pokemon.js';
-console.log (POKEMON);
+import POKEMON from'./data/pokemon/pokemon.js';
+console.log(POKEMON);
+import { filtradoPokemones } from './data.js';
 
 window.onload = () => {
-const motrarlista =() => {
-  POKEMON.map((pokemon)) => {
+//funcion para que aparezca algo en el boton show
+const mostrarLista = () => {
+  POKEMON.map((pokemon) => {
     let card = document.createElement("div");
-    const template =`
-    <div class = "contenedor">
-    <div class = "card">
+    const template = `
+    <div class ="contenedor">
+    <div class="card">
     <span>${pokemon.name}</span>
     <span>${pokemon.type}</span>
     <img src="${pokemon.img}";/>
@@ -22,91 +18,57 @@ const motrarlista =() => {
     </div>
     `
     card.innerHTML = template;
-    document.querySelector("#contenedor").appendChild(card);
+   document.querySelector("#contenedor").appendChild(card);
   })
 };
-document.querySelector("#menu").addEventListener("click",mostrarLista);
-
-/*const mostrarlista = () => {
-
- //const todos = document.createElement ("div");
- todos.innerText = POKEMON[0].name + " " + POKEMON[0].type;
- todos.classList.add("contenedor")
- document.body.appendChild(todos);//
- 
- const lista = document.createElement("div");
- lista.classList.add("contenedor");
- 
-
- for (let i=0; i<POKEMON.length; i++){
-     let card = document.createElement("div");
-     card.classList.add("card");
-     let margenCard = document.createElement("div");
-     margenCard.classList.add("margenCard");
-     card.appendChild(margenCard);
-     let descripcion = margenCard.innerText = POKEMON[i].name + " " + POKEMON[i].type;
-     let img = document.createElement ("img");
-     img.setAttribute('src',POKEMON[i].img);
-
-     let info = document.createElement("button");
-     info.classList.add("infoBoton");
-     info.innerText = "+ INFO";
-
-
-     document.body.appendChild(lista);
-     lista.appendChild(card);
-     margenCard.appendChild(img);
-     margenCard.appendChild(info);
-
- }
-
- 
-
-};
-
-document.querySelector("#menu").addEventListener("click", mostrarlista);
-}*/
-
-
-/*let evento = event.target.id;
-
-import { filtradoPorTipo}    from 
-export const mostrarPokemones = (tipos)=>{
-  tipos.map((Pokemones)=>{
-    let span = document.createElement("span");
-    const template = `<div class = "card">${Pokemones.name}</div>
-    <img src="${Pokemones.image}></img>"`
-    span.innerHTML = template;
-    document.querySelector("").appendChild(span);
-  })
-}*/
-
-
-
-
-
-
-
-
-
-//import  pokemonBytype  from './data.js';
-//console.log (pokemonBytype);
-//import { pokemonAll } from './data.js';
-//import {filtradoPorTipo} from './data.js';
-//import pokemon from './data/pokemon/pokemon.js';
-
-
-//console.log(
-//filtradoPorTipo(name)
-//);
-
-
-  
-//let botonFire = document.getElementById("botonFire");
-//botonFire.addEventListener("click",addElement); 
-
+document.querySelector("#menu").addEventListener("click", mostrarLista);
+//funcion para que se cree una lista que contiene los objetos
+const tipos = ['Bug', 'Dark', 'Dragon', 'Electric', 'Fairy', 'Fighting', 'Fire', 'Flying', 'Ghost', 'Grass', 'Ice',
+'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water'];
+tipos.forEach(addEventListener('click', mostrarFiltrado));
 /*
- * console.log(POKEMON);
- * console.log(LoL);
- * console.log(POTTER)
+document.getElementById("Bug").addEventListener("click", mostrarFiltrado);
+document.getElementById("Dark").addEventListener("click", mostrarFiltrado);
+document.getElementById("Dragon").addEventListener("click", mostrarFiltrado);
+document.getElementById("Electric").addEventListener("click", mostrarFiltrado);
+document.getElementById("Fairy").addEventListener("click", mostrarFiltrado);
+document.getElementById("Fighting").addEventListener("click", mostrarFiltrado);
+document.getElementById("Fire").addEventListener("click", mostrarFiltrado);
+document.getElementById("Flying").addEventListener("click", mostrarFiltrado);
+document.getElementById("Ghost").addEventListener("click", mostrarFiltrado);
+document.getElementById("Grass").addEventListener("click", mostrarFiltrado);
+document.getElementById("Ground").addEventListener("click", mostrarFiltrado);
+document.getElementById("Ice").addEventListener("click", mostrarFiltrado);
+document.getElementById("Normal").addEventListener("click", mostrarFiltrado);
+document.getElementById("Poison").addEventListener("click", mostrarFiltrado);
+document.getElementById("Psychic").addEventListener("click", mostrarFiltrado);
+document.getElementById("Rock").addEventListener("click", mostrarFiltrado);
+document.getElementById("Steel").addEventListener("click", mostrarFiltrado);
+document.getElementById("Water").addEventListener("click", mostrarFiltrado);
 */
+//parametro e que es el evento
+function mostrarFiltrado(e) {
+//cuando se de click al event listener, se ira al elemento y obtendra el id de ese elemento.
+const x = e.target.id;
+console.log(x);
+//guardados todos los datos filtrados
+const pokemonesFiltrados = filtradoPokemones(POKEMON, x);
+console.log(pokemonesFiltrados);
+
+pokemonesFiltrados.map((mostrarFiltrado) => {
+  let card = document.createElement("div");
+  const template = `
+  <div class="filtrado">
+  <div class="card">
+  <span>${mostrarFiltrado.name}</span>
+  <span>${mostrarFiltrado.type}</span>
+  <img src="${mostrarFiltrado.img}";/>
+  <button class = "infoBoton">+INFO</button>
+  </div>
+  </div>
+  `
+  card.innerHTML = template;
+ document.querySelector("#filtrado").appendChild(card);
+});
+}
+}

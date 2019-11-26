@@ -1,165 +1,150 @@
-
-body{
-    height: 800px;
-    width: 100%;
-    margin: 0px;
-    background-color:#f0f0f0;
-    font-family: 'Open Sans';        
+body {
+ height: 800px;
+ width: 100%;
+ margin: 0px;
+ background-color: #f0f0f0;
+ font-family: 'Open Sans';
 }
-div.barraEstatica{
-    overflow: hidden;
-    display: flex;
-    justify-content: space-around;
-    background-color:#333333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 60px;
-    z-index: 3;
-    box-shadow: -1px 4px 8px rgb(107, 104, 98);
+div.barraEstatica {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  background-color: #333333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 3;
+  box-shadow: -1px 4px 8px rgb(107, 104, 98);
 }
 img.logotipo{
-    position: relative;
-    top: -15px;
-    align-items:center; 
-    height: 85px;
-    z-index: 3;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  position: relative;
+  top: -15px;
+  align-items: center;
+  height: 85px;
+  z-index: 3;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 #pokebola{
-    position: relative;
-    top: 15px;
-    left: 20px;
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-    z-index: 3;
+ position: relative;
+ top: 15px;
+ left: 20px;
+ height: 30px;
+ width: 30px;
+ cursor: pointer;
+ z-index: 3;
 }
 #menu.material-icons{
-    color:white;
-    z-index: 100;
-    position: relative;
-    top: 18px;
-    right: 30px;
-    cursor: pointer;
-
+  color: white;
+  z-index: 100;
+  position: relative;
+  top: 18px;
+  right: 30px;
+  cursor: pointer;
 }
 #left{
-    position: relative;
-    top:28px;
-    left: 0%;
-    color: #333333;
+  position: relative;
+  top: 28px;
+  left: 0%;
+  color: #333333;
+  z-index: 3;
 }
 #right{
-    position: relative;
-    top: 28px;
-    right: 0%;
-    color: #333333;
+  position: relative;
+  top: 28px;
+  right: 0%;
+  color: #333333;
+  z-index: 3;
 }
-
-.navegadorTipos{
-    display: flex;
-    position: relative;
-    top:60px;
-    height:100px;
-    width: 90%;
-    background-color:transparent;
-    justify-content: center;
-    z-index: 2;
-    margin-right: auto;
-    margin-left: auto;
-    overflow: hidden;
-    
+div.navegadorTipos{
+ display:flex;
+ position: relative;
+ top: 60px;
+ height: 100px;
+ width: 90%;
+ background-color: transparent;
+ justify-content: center;
+ z-index: 2;
+ margin-left: auto;
+ margin-right: auto;
+ overflow: hidden;
 }
-
-
 .div{
-    height: 100px;
-    width: 100px;
-    background:transparent;
-    margin: 10px;
-    display: inline-block;
-    position: relative;
-    top:100px;
- }
- img.tipos{
-     position: relative;
-     top: 14px;
-     width: 50px;
-     height: 50px;
-     cursor: pointer;
-     -webkit-transition-duration: 0.4s;
-     transition-duration: 0.4s;
-     border-radius: 50px;
- }
- img.tipos:hover{
-     background: #b4b4b4;
-     border-radius: px;
-     color:white;
-     width: 70px;
-     height: 70px;
-     box-shadow: 2px 2px 10px #838383;
- }
- div.contenedor{
-     position: relative;
-     padding: auto;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     flex-wrap: wrap;
-     margin-left: auto;
-     margin-right: auto;
-     max-width: 100%;
-     background-color:transparent;
-     z-index: 1;
+  height: 100px;
+  width: 100px;
+  background: red;
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+  top: 100px;
+}
+img.tipos{
+  position: relative;
+  top: 14px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+   transition-duration: 0.4s;
+   border-radius:50px;
+}
+img.tipos:hover{
+  background: #b4b4b4;
+  color:white;
+  width: 70px;
+  height: 70px;
+  box-shadow: 2px 2px 10px #838383;
+}
 
- }
- div.card{
-     width: 120px;
-     height: 120px;
-     padding: 5em;
-     text-align: center;
-     flex-wrap: wrap;
-     background-color: rgba(255, 255, 255, 0.3);
-     box-shadow: 5px 5px 5px #d2d2d2;
-     border-radius: 20%;
+div.contenedor {
+  position: relative;
+  padding: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: transparent;
+  z-index: 1;
+  max-width: 100%;
+}
 
- }
- .infoBoton{
-     border: none;
-     outline: none;
-     border-radius: 8px;
-     background-color: #E0F1EC;
-     cursor: pointer;
-     font-size: 1rem;
-     color: #789189;
-     text-shadow: 1px 1px 2px #d2d2d2;
-     padding:.2em ;
-
- }
- button.infoBoton:hover{
-     color: #d2d2d2;
-     background-color: #ed4376;
-     -moz-transition: 1s ease-out;
-     -o-transition: 1s ease-out;
-     transition: 1s ease-out;
- }
-
-  .estilosDIVS{
-    height: 100px;
-    width: 100px;
-    background: red;
-    margin: 10px;
-    display: inline-block;
-    position: relative;
-    top:100px;  
-  }
-  .margenCard{
-     margin-left: auto;
-     margin-right: auto;
-     margin-bottom: auto;
-      
-   
-  }
+div.filtrado {
+  position: relative;
+  padding: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: transparent;
+  z-index: 1;
+  max-width: 100%;
+}
+div.card{
+  width: 120px;
+  height: 120px;
+  padding: 5em;
+  text-align: center;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 5px #d2d2d2;
+  border-radius: 20%;
+}
+.infoBoton{
+border: none;
+outline: none;
+border-radius: 8px;
+background-color: #E0F1EC;
+cursor: pointer;
+font-size: 1rem;
+color: #789189;
+text-shadow: 1px 1px 2px #d2d2d2;
+padding: .2em;
+}
+button.infoBoton:hover{
+color: #d2d2d2;
+background-color: #ed4376;
+-moz-transition:  1s ease-out;
+-o-transition:  1s ease-out;
+transition:  1s ease-out;
+}

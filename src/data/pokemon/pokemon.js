@@ -29,6 +29,7 @@ export default [{
     num: '003',
     name: 'Venusaur',
   }],
+/*final of the bulbasaur object */
 }, {
   id: 2,
   num: '002',
