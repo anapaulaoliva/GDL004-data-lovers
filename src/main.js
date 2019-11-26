@@ -8,12 +8,31 @@ import  POKEMON  from './data/pokemon/pokemon.js';
 console.log (POKEMON);
 
 window.onload = () => {
+const motrarlista =() => {
+  POKEMON.map((pokemon)) => {
+    let card = document.createElement("div");
+    const template =`
+    <div class = "contenedor">
+    <div class = "card">
+    <span>${pokemon.name}</span>
+    <span>${pokemon.type}</span>
+    <img src="${pokemon.img}";/>
+    <button class = "infoBoton">+INFO</button>
+    </div>
+    </div>
+    `
+    card.innerHTML = template;
+    document.querySelector("#contenedor").appendChild(card);
+  })
+};
+document.querySelector("#menu").addEventListener("click",mostrarLista);
 
-const mostrarlista = () => {
- /*const todos = document.createElement ("div");
+/*const mostrarlista = () => {
+
+ //const todos = document.createElement ("div");
  todos.innerText = POKEMON[0].name + " " + POKEMON[0].type;
  todos.classList.add("contenedor")
- document.body.appendChild(todos);*/
+ document.body.appendChild(todos);//
  
  const lista = document.createElement("div");
  lista.classList.add("contenedor");
@@ -46,7 +65,22 @@ const mostrarlista = () => {
 };
 
 document.querySelector("#menu").addEventListener("click", mostrarlista);
-}
+}*/
+
+
+/*let evento = event.target.id;
+
+import { filtradoPorTipo}    from 
+export const mostrarPokemones = (tipos)=>{
+  tipos.map((Pokemones)=>{
+    let span = document.createElement("span");
+    const template = `<div class = "card">${Pokemones.name}</div>
+    <img src="${Pokemones.image}></img>"`
+    span.innerHTML = template;
+    document.querySelector("").appendChild(span);
+  })
+}*/
+
 
 
 
@@ -63,7 +97,7 @@ document.querySelector("#menu").addEventListener("click", mostrarlista);
 
 
 //console.log(
-  //  filtradoPorTipo(mi)
+//filtradoPorTipo(name)
 //);
 
 
