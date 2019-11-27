@@ -14,7 +14,7 @@ div.barraEstatica {
   top: 0;
   width: 100%;
   height: 60px;
-  z-index: 3;
+  z-index: 5;
   box-shadow: -1px 4px 8px rgb(107, 104, 98);
 }
 img.logotipo{
@@ -125,12 +125,16 @@ div.card{
   height: 120px;
   padding: 5em;
   text-align: center;
+  color: #d2d2d2;
+  text-shadow: 3px 3px 5px #d2d2d2;
+  font-family: 'Open Sans';
   flex-wrap: wrap;
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 5px 5px 5px #d2d2d2;
   border-radius: 20%;
 }
 .infoBoton{
+font-family: 'Open Sans';
 border: none;
 outline: none;
 border-radius: 8px;
@@ -139,12 +143,276 @@ cursor: pointer;
 font-size: 1rem;
 color: #789189;
 text-shadow: 1px 1px 2px #d2d2d2;
-padding: .2em;
+padding: .2em
+transition: transforrm 2s;
 }
 button.infoBoton:hover{
 color: #d2d2d2;
 background-color: #ed4376;
--moz-transition:  1s ease-out;
--o-transition:  1s ease-out;
-transition:  1s ease-out;
+width: 100px;
+-moz-transition: width 2s;
+-o-transition: width  2s;
+transition:  2s;
+-webkit-transform: rotate(-180deg); /* Safari */
+transform: rotate(180deg);
+}
+#infoBotonSpan{
+  display: inline-block;
+  transition: transform 2s;
+  -webkit-transform: rotate(360deg);
+}
+#infoBotonSpan:hover{
+-webkit-transform: rotate(-180deg);
+
+}
+div.paginaInicio{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: fixed;
+  max-width: 100%;
+  background-color: transparent;
+  z-index: 1;
+}
+img.imagenInicio {
+}
+span#textoInicio {
+font-family: 'Open Sans';
+font-size: 2rem;
+bottom: 280px;
+right: 60px;
+max-width: 60%;
+}
+button#botonComenzar{
+  font-family: 'Open Sans';
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: relative;
+  left: 65%;
+  bottom: 200px;
+  padding: .5em;
+  max-width: 60%;
+  align-items: center;
+  border-radius: 30px;
+  color: white;
+  background-color: cornflowerblue;
+  -moz-transition:  .5s ease-in-out;
+  -o-transition:  .5s ease-in-out;
+  transition:  .5s ease-in-out;
+  box-shadow: 5px 5px 10px cornflowerblue;
+}
+button#botonComenzar:hover{
+  background-color: #80a8f0;
+  max-width: 70%;
+  font-size: 1rem;
+  -moz-transition:  .5s ease-in-out;
+  -o-transition:  .5s ease-in-out;
+  transition:  .5s ease-in-out;
+  box-shadow: 5px 5px 10px cornflowerblue;
+}
+div.topPokeContenedor{
+  display: none;
+  background-color: #d2d2d2;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+p.topPokeTexto{
+  font-family: 'Open Sans';
+  color: cornflowerblue;
+  text-shadow: 3px 3px 10px cornflowerblue;
+  font-size: 3rem;
+  text-align: center;
+  z-index: 5;
+}
+.wrap{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.ball {
+  animation: ball-bounce 1s infinite;
+  height: 200px;
+  position: relative;
+  width: 200px;
+  z-index: 2;
+}
+
+.ball__top {
+  background: #ee1515;
+  border-top: 7px solid black;
+  content: '';
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.ball__top:before {
+  content: '';
+  animation: ball-before-anim 1s infinite;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.25) 29%,rgba(255,255,255,0) 70%);
+  display: block;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+  z-index: 4;
+}
+
+.ball__button {
+  background-color: white;
+  border-radius: 50%;
+  border: 5px solid black;
+  display: block;
+  height: 20px;
+  left: calc(50% - 15px);
+  position: absolute;
+  top: calc(50% - 10px);
+  width: 20px;
+  z-index: 3;
+}
+
+.ball__bottom {
+  background: #ffffff;
+  border-top: 7px solid black;
+  bottom: 0;
+  display: block;
+  height: calc(50% - 7px);
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.ball__bottom:after {
+  content: '';
+  animation: ball-after-anim 1s infinite;
+  background: linear-gradient(to bottom, transparent 0%,#999999 100%);
+  bottom: 0;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 4;
+}
+
+.ballShadow {
+  animation: ball-shadow 1s infinite;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: block;
+  height: 20px;
+  position: relative;
+  width: 120px;
+  z-index: 1;
+}
+
+@keyframes ball-bounce {
+  0% {
+    bottom: 30px;
+    clip-path: ellipse(22% 32% at 50% 50%);
+  }
+  50% {
+    bottom: -50px;
+  }
+  70% {
+    bottom: -50px;
+    clip-path: ellipse(31% 18% at 50% 50%);
+  }
+  100% {
+    bottom: 30px;
+    clip-path: ellipse(22% 32% at 50% 50%);
+  }
+}
+
+@keyframes ball-shadow {
+  0% {
+    bottom: 30px;
+    clip-path: ellipse(22% 34% at 50% 50%);
+  }
+  70% {
+    bottom: 25px;
+    clip-path: ellipse(31% 18% at 50% 50%);
+  }
+  100% {
+    bottom: 30px;
+    clip-path: ellipse(22% 34% at 50% 50%);
+  }
+}
+
+@keyframes ball-before-anim {
+  0% {
+    height: 30px;
+    left: 50%;
+    top: 45%;
+    width: 30px;
+  }
+  50% {
+    height: 45px;
+    left: 47%;
+    top: 52%;
+    width: 45px;
+  }
+  70% {
+    height: 45px;
+    left: 47%;
+    top: 52%;
+    width: 45px;
+  }
+  100% {
+    height: 30px;
+    left: 50%;
+    top: 45%;
+    width: 30px;
+  }
+}
+
+@keyframes ball-after-anim {
+  0% {
+    background: linear-gradient(to bottom, transparent 0%, #555 100%);
+    height: 60%;
+  }
+  50% {
+    background: linear-gradient(to bottom, transparent 0%, #777 100%);
+    height: 100%;
+  }
+  70% {
+    background: linear-gradient(to bottom, transparent 0%, #777 100%);
+    height: 100%;
+  }
+  100% {
+    background: linear-gradient(to bottom, transparent 0%, #555 100%);
+    height: 60%;
+  }
+}
+.orderMenu{
+  display: none;
+  background-color: #333333;
+  color: white;
+  float: right;
+  text-align: center;
+  position: fixed;
+  top: 55px;
+  right: 0px;
+  z-index: 4;
+  box-shadow: -1px 4px 8px rgb(107, 104, 98);
+}
+.orderMenu > ul{
+  cursor: pointer;
+  list-style: none;
+  padding: 10px;
+}
+li{
+  padding: 5px;
+}
+li:hover{
+  background-color: #333333;
+  color: cornflowerblue;
 }
