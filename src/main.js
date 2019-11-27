@@ -7,10 +7,18 @@ const mostrarMenu = () => {
  let orderMenu = document.querySelector('.orderMenu').style.display="flex";
 
 }
-document.querySelector("#menu").addEventListener("click", mostrarMenu);
+document.querySelector("#menu").addEventListener("mouseover", mostrarMenu);
+/*
+const ocultarMenu = () => {
+ let orderMenu = document.querySelector('.orderMenu').style.display="none";
+
+}
+document.querySelector(".orderMenu").addEventListener("mouseout", ocultarMenu);
+*/
 //funcion para que aparezca algo en el boton show
 const mostrarLista = () => {
 document.querySelector("#contenedor").innerHTML = '';
+document.querySelector('.paginaInicio').style.display="none"
 document.querySelector('.topPokeContenedor').style.display="none";
   POKEMON.map((pokemon) => {
     let card = document.createElement("div");
@@ -50,7 +58,7 @@ document.getElementById('Water').addEventListener('click', mostrarFiltrado);
 
 function mostrarFiltrado(e) {
   document.querySelector("#contenedor").innerHTML = ' ';
-  document.querySelector('#contenedor').style.display="";
+  document.querySelector('#contenedor').style.display="flex";
   document.querySelector('.topPokeContenedor').style.display="none";
 //cuando se de click al event listener, se ira al elemento y obtendra el id de ese elemento.
 let paginaInicio = document.querySelector('.paginaInicio');
