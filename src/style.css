@@ -368,16 +368,22 @@ button#botonComenzar:hover{
   }
 }
 .orderMenu{
-  display: none;
   background-color: #333333;
   color: white;
   float: right;
   text-align: center;
+  transition: 0.3s ease-in;
   position: fixed;
   top: 55px;
-  right: 0px;
+  right: -200px;
   z-index: 4;
   box-shadow: -1px 4px 8px rgb(107, 104, 98);
+  
+}
+.orderMenu.active{
+  right: 0;
+  transition: 0.3s ease-out;
+
 }
 .orderMenu > ul{
   font-family: 'Open Sans';
@@ -451,9 +457,7 @@ img.slides {
   left: 38%;
 }
 
-.active {
-  background-color: #717171;
-}
+
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;

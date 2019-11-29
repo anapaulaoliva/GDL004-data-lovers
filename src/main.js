@@ -5,11 +5,11 @@ import { pokemonesAZ } from './data.js';
 import { pokemonesZA } from './data.js';
 
 window.onload = () => {
-const mostrarMenu = () => {
- document.querySelector('.orderMenu').style.display="flex";
+//const mostrarMenu = () => {
+ //document.querySelector('.orderMenu').style.display="flex";
 
-}
-document.querySelector("#menu").addEventListener("mouseover", mostrarMenu);
+//}
+//document.querySelector("#menu").addEventListener("mouseover", mostrarMenu);
 
 /*const ocultarMenu = () => {
  let orderMenu = document.querySelector('.orderMenu').style.display="none";
@@ -150,4 +150,12 @@ document.getElementById("pokeUno").addEventListener("click", mostrarLista);
 document.getElementById("pokeDos").addEventListener("click", mostrarLista);
 document.getElementById("pokeTres").addEventListener("click", mostrarLista);
 document.getElementById("pokeCuatro").addEventListener("click", mostrarLista);
+
+const menu = document.getElementById('menu');
+menu.addEventListener('click', () => {
+     document.getElementById('menuContainer').classList.toggle('active');
+});
+
+
 }
+
