@@ -146,16 +146,10 @@ function showSlides() {
   setTimeout(showSlides, 3000); // Change image every "" seconds
 }
 
-document.getElementById("pokeUno").addEventListener("click", mostrarLista);
-document.getElementById("pokeDos").addEventListener("click", mostrarLista);
-document.getElementById("pokeTres").addEventListener("click", mostrarLista);
-document.getElementById("pokeCuatro").addEventListener("click", mostrarLista);
-
 const menu = document.getElementById('menu');
 menu.addEventListener('click', () => {
-     document.getElementById('menuContainer').classList.toggle('active');
+     document.getElementById('menuContainer').classList.toggle('active-menu');
 });
 
 
 }
-
