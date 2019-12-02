@@ -30,7 +30,7 @@ document.querySelector('.topPokeContenedor').style.display="none";
     <span style="text-transform: uppercase;">${pokemon.name}</span>
     <span style="text-transform: uppercase;">${pokemon.type}</span>
     <img src="${pokemon.img}";/>
-    <button class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
+    <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
     </div>
     </div>
     `
@@ -101,7 +101,7 @@ pokemonesFiltrados.map((pokemonFiltrado) => {
   <span style="text-transform: uppercase;">${pokemonFiltrado.name}</span>
   <span style="text-transform: uppercase;">${pokemonFiltrado.type}</span>
   <img src="${pokemonFiltrado.img}";/>
-  <button class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
+  <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
   </div>
   </div>
   `
@@ -150,6 +150,24 @@ const menu = document.getElementById('menu');
 menu.addEventListener('click', () => {
      document.getElementById('menuContainer').classList.toggle('active-menu');
 });
+
+const mostrarCardInd = () => {
+let cardInd = document.createElement("div");
+cardInd.classList.add('cardIndividual');
+const template = `
+<section id="paginaCardIndividual">
+<div class="cardIndividual">
+  <img class="imgInd"src="${pokemon.img}";/>
+  <span class="nameInd">${pokemon.name}</span>
+  <span class="debilidadesInd">${pokemon.weaknesses}</span>
+  <span class"dulceInd">${pokemon.candy}</span>
+  <button class = "botonCerrar"><span id="botonCerrar">&times;</span></button>
+</div>
+<section/> `
+cardInd.innerHTML = template;
+document.querySelector("#paginaCardIndividual").appendChild(cardInd);
+}
+document.getElementById('infoBoton').addEventListener("click", mostrarCardInd);
 
 
 }
