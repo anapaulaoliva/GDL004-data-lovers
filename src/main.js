@@ -27,10 +27,9 @@ document.querySelector('.topPokeContenedor').style.display="none";
     const template = `
     <div class ="contenedor">
     <div class="card">
-    <span style="text-transform: uppercase;">${pokemon.name}</span>
     <span style="text-transform: uppercase;">${pokemon.type}</span>
     <img src="${pokemon.img}";/>
-    <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
+    <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan"style="text-transform: uppercase;">${pokemon.name}</span></button>
     </div>
     </div>
     `
@@ -120,6 +119,8 @@ document.querySelector('#botonComenzar').addEventListener('click', mostrarTopPok
 
 const paginaInicio = () => {
   document.querySelector('.paginaInicio').style.display="flex";
+  document.querySelector('.general-flex-container').style.display="flex";
+  document.querySelector('.sub-flex-container').style.display="flex";
   document.querySelector('.topPokeContenedor').style.display="none";
   document.querySelector('#contenedor').style.display="none";
 
@@ -143,7 +144,7 @@ function showSlides() {
   }
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 3000); // Change image every "" seconds
+  setTimeout(showSlides, 4000); // Change image every "" seconds
 }
 
 const menu = document.getElementById('menu');
@@ -151,7 +152,7 @@ menu.addEventListener('click', () => {
      document.getElementById('menuContainer').classList.toggle('active-menu');
 });
 
-const mostrarCardInd = () => {
+/*const mostrarCardInd = () => {
 let cardInd = document.createElement("div");
 cardInd.classList.add('cardIndividual');
 const template = `
@@ -168,6 +169,6 @@ cardInd.innerHTML = template;
 document.querySelector("#paginaCardIndividual").appendChild(cardInd);
 }
 document.getElementById('infoBoton').addEventListener("click", mostrarCardInd);
-
+*/
 
 }
