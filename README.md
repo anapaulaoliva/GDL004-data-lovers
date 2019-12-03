@@ -31,9 +31,15 @@ Pokémon GO es una experiencia de juego internacional que cuenta con más de mil
 
 [POKE-DATALOVERS.pdf](https://github.com/SleekPanther/test/files/3918933/POKE-DATALOVERS.pdf)
 
+![dl1](https://user-images.githubusercontent.com/56927809/70095595-ca5f5f80-15ea-11ea-9cd2-d48f49382237.JPG)
+![dl2](https://user-images.githubusercontent.com/56927809/70095600-cc292300-15ea-11ea-851a-8e8fc1bda4f9.JPG)
+![dl3](https://user-images.githubusercontent.com/56927809/70095601-cd5a5000-15ea-11ea-89a9-43e626d3c4ce.JPG)
+![dl4](https://user-images.githubusercontent.com/56927809/70095603-ce8b7d00-15ea-11ea-9082-341b2c53f2b1.JPG)
+
 ###### (Adobe DX)
 
-![Prototype](https://user-images.githubusercontent.com/56927809/70094272-cbdb5880-15e7-11ea-9d2a-1248b91b1bbe.JPG)
+![Prototype](https://user-images.githubusercontent.com/56927809/70095477-76547b00-15ea-11ea-8017-1e136ec5cf36.JPG)
+
 
 ## Funcionalidades de la WebApp Pokedx :sparkles:
 - [x] Mostrar data filtrada.
