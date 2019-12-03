@@ -11,7 +11,7 @@ Pokémon GO es una experiencia de juego internacional que cuenta con más de mil
 
 
 ###### Imagen del Prototipo Final
-![finalPrototype]!(https://user-images.githubusercontent.com/56927809/70093365-d7c61b00-15e5-11ea-8703-2bee3b2589de.JPG)
+![finalPrototype](https://user-images.githubusercontent.com/56927809/70093365-d7c61b00-15e5-11ea-8703-2bee3b2589de.JPG)
 
 
 ## Investigación UX :busts_in_silhouette:
