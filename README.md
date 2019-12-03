@@ -4,7 +4,7 @@
     * Clona tu `fork` a tu computadora.
 	* Usa el comando `$ npm start` para ver la interfaz del programa en el navegador.
     * Dirígete a  `http://localhost:5000` en tu navegador.
-    * Para ver el proyecto en `GitHub Pages` Haz click [aquí](/):point_left:
+    * Para ver el proyecto en `GitHub Pages` https://anapaulaoliva.github.io/GDL004-data-lovers/src/ :point_left:
 
 ## POKEMON GO
 Pokémon GO es una experiencia de juego internacional que cuenta con más de mil millones de descargas y ha sido nombrada "el mejor juego para móviles" por Game Developers Choice Awards y "la mejor aplicación del año" por TechCrunch (tomado de Google Play).
