@@ -17,6 +17,7 @@ export const filtradoPokemones = (POKEMON, evento) => {
     }
   });
 }
+
 export const pokemonesAZ = (POKEMON, name) => {
   let resultadoAZ = [];
   for (name in POKEMON) {
@@ -25,6 +26,7 @@ export const pokemonesAZ = (POKEMON, name) => {
       resultadoAZ.push(POKEMON[name]);
     }
   }
+
   resultadoAZ.sort(function(a,b) {
     if (a.name < b.name ) {
       return -1;
@@ -38,6 +40,7 @@ export const pokemonesAZ = (POKEMON, name) => {
   //console.log(resultadoAZ);
   return resultadoAZ;
 }
+
 export const pokemonesZA = (POKEMON, name) => {
   let resultadoZA = [];
   for (name in POKEMON) {
@@ -46,6 +49,7 @@ export const pokemonesZA = (POKEMON, name) => {
       resultadoZA.push(POKEMON[name]);
     }
   }
+  
   resultadoZA.sort(function(a,b) {
     if (a.name > b.name ) {
       return -1;

@@ -1,0 +1,40 @@
+<!-- Para poder ejecutar los test en el navegador
+empecemos por crear un archivo HTML con el nombre
+de test.html-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <!--Anade la hoja de estilos de mocha desde el
+      -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/4.1.0/mocha.min.css" />
+  </head>
+
+  <body>
+
+    <div id="mocha"></div>
+    <!-- Anade mocha y chai desde el content delivery network de
+     cdnjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/4.1.0/mocha.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.1.2/chai.min.js"></script>
+    <!-- Incluimos el codigo que queremos testear
+     -->
+    <script src="./makeVowelsUpperCase.js"></script>
+    <!-- Guardamos una referencia a chai.assert
+    para poder usar directamente assert en los test
+    en vez de chai.assert
+     -->
+    <script>
+      const { assert } = chai;
+      //Inicializa la interfaz BDD de mocha
+      mocha.setup('bdd');
+    </script>
+    <!-- Incluimos los tests que queremos correr
+     -->
+    <script src="./makeVowelsUpperCase.spec.js"></script>
+    <!--ejecutamos los tests
+     -->
+    <script>mocha.run();</script>
+
+  </body>
+</html>
