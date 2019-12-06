@@ -36,6 +36,11 @@ Pokémon GO es una experiencia de juego internacional que cuenta con más de mil
 ![dl3](https://user-images.githubusercontent.com/56927809/70095601-cd5a5000-15ea-11ea-89a9-43e626d3c4ce.JPG)
 ![dl4](https://user-images.githubusercontent.com/56927809/70095603-ce8b7d00-15ea-11ea-9082-341b2c53f2b1.JPG)
 
+
+###### Prototipo de Baja Fidelidad
+
+![LowFidPrototype](https://user-images.githubusercontent.com/56927809/70346203-5fe53400-1823-11ea-81d5-a3e268b18691.JPG)
+
 ###### (Adobe DX)
 
 ![Prototype](https://user-images.githubusercontent.com/56927809/70095477-76547b00-15ea-11ea-8017-1e136ec5cf36.JPG)
@@ -45,6 +50,30 @@ Pokémon GO es una experiencia de juego internacional que cuenta con más de mil
 - [x] Mostrar data filtrada.
 - [x] SortBy y SortBy reverse de la data.
 - [x] Menú desplegable y slider.
+
+
+## Testing (BDD) 
+
+PASS test/data.spec.js
+  filtradoPokemones
+    √ debería ser una función (5ms)
+    √ debería retornar el filtradoPokemones con type: Grass (1ms)
+  pokemonesAZ
+    √ debería ser una función (1ms)
+    √ debería retornar el primer pokemon con primer letra: A (2ms)
+  pokemonesZA
+    √ debería ser una función (1ms)
+    √ debería retornar el último pokemon con primer letra: Z (361ms)
+
+------------------|----------|----------|----------|----------|-------------------|
+File              |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------|----------|----------|----------|----------|-------------------|
+All files         |      100 |    71.43 |      100 |      100 |                   |
+ src              |      100 |    71.43 |      100 |      100 |                   |
+  data.js         |      100 |    71.43 |      100 |      100 |       24,33,47,56 |
+ src/data/pokemon |        0 |        0 |        0 |        0 |                   |
+  pokemon.js      |        0 |        0 |        0 |        0 |                   |
+------------------|----------|----------|----------|----------|-------------------|
 
 
 ## Feedback :speech_balloon:
