@@ -18,8 +18,13 @@ window.onload = () => {
 document.querySelector(".orderMenu").addEventListener("mouseout", ocultarMenu);
 */
 //funcion para que aparezca algo en el boton show
-const mostrarLista = (POKEMON, evento, listaAZ, listaZA) => {
+
+//  const existe = document.getElementById('.infoBoton');
+  const mostrarLista = (POKEMON, evento, listaAZ, listaZA) => {
+  //modificacion 2
+
 document.querySelector("#contenedor").innerHTML = '';
+document.querySelector("#contenedor").style.display = 'flex';
 document.querySelector('.paginaInicio').style.display="none"
 document.querySelector('.topPokeContenedor').style.display="none";
   POKEMON.map((pokemon) => {
@@ -99,14 +104,18 @@ pokemonesFiltrados.map((pokemonFiltrado) => {
   <div class="card">
   <span style="text-transform: uppercase;">${pokemonFiltrado.name}</span>
   <span style="text-transform: uppercase;">${pokemonFiltrado.type}</span>
-  <img src="${pokemonFiltrado.img}";/>
-  <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
+  <img class="imgCard" src="${pokemonFiltrado.img}";/>
+   <div class ="buttonLayout">
+   <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
+  </div>
   </div>
   </div>
   `
   card.innerHTML = template;
  document.querySelector("#contenedor").appendChild(card);
+
 });
+
 }
 
 //funcion para boton comenzar de la pagina de Inicio.
@@ -151,24 +160,45 @@ const menu = document.getElementById('menu');
 menu.addEventListener('click', () => {
      document.getElementById('menuContainer').classList.toggle('active-menu');
 });
+//modificacion 3
+/*
+const mostrarCardInd = () => {
+  let imagen = document.getElementById('imagenPokemon').innerText;
+  console.log(imagen);
+  let nombre = document.getElementById('nombrePokemon').innerText;
+  console.log(nombre);
+  let debilidad = document.getElementById('debilidadPokemon').innerText;
+  console.log(debilidad);
+  let candy = document.getElementById('candyPokemon').innerText;
+  console.log(candy);
+  let tipo = document.getElementById('tipoPokemon').innerText;
+  console.log(tipo);
 
-/*const mostrarCardInd = () => {
-let cardInd = document.createElement("div");
-cardInd.classList.add('cardIndividual');
-const template = `
-<section id="paginaCardIndividual">
-<div class="cardIndividual">
-  <img class="imgInd"src="${pokemon.img}";/>
-  <span class="nameInd">${pokemon.name}</span>
-  <span class="debilidadesInd">${pokemon.weaknesses}</span>
-  <span class"dulceInd">${pokemon.candy}</span>
-  <button class = "botonCerrar"><span id="botonCerrar">&times;</span></button>
-</div>
-<section/> `
+  let cardInd = document.createElement("div");
+  cardInd.classList.add('cardIndividual');
+  const template = `
+   <section id="paginaCardIndividual">
+    <div class="cardIndividual">
+     <img class="imgInd" src="${imagen}";/><br>
+     <span class="nameInd">Nombre: ${nombre}</span><br>
+     <span class="debilidadesInd">Debilidad: ${debilidad}</span><br>
+     <span class"dulceInd">${candy}</span><br>
+     <button class = "botonCerrar"><span id="botonCerrar">&times;</span></button>
+    </div>
+   <section/> `
 cardInd.innerHTML = template;
-document.querySelector("#paginaCardIndividual").appendChild(cardInd);
-}
-document.getElementById('infoBoton').addEventListener("click", mostrarCardInd);
-*/
+document.querySelector("#muestraIndividual").appendChild(cardInd);
+document.querySelector('.botonCerrar').addEventListener('click',() => {
+  let cerrar = document.querySelector('.cardIndividual');
+  cerrar.parentNode.removeChild(cerrar);
+});
+//modificacion 1
+document.querySelector('.infoBoton').addEventListener('click', mostrarCardInd);
+}*/
+
+
+
+
+
 
 }

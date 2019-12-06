@@ -122,6 +122,13 @@ div.card{
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 5px 5px 5px #d2d2d2;
   border-radius: 20%;
+  z-index: -1;
+}
+.imgCard {
+
+}
+.buttonLayout{
+
 }
 .infoBoton{
 font-family: 'Open Sans';
@@ -150,6 +157,7 @@ transform: rotate(180deg);
   display: inline-block;
   transition: transform 2s;
   -webkit-transform: rotate(360deg);
+  z-index: 1;
 }
 #infoBotonSpan:hover{
 -webkit-transform: rotate(-180deg);
@@ -490,4 +498,5 @@ div.cardIndividual{
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 5px 5px 5px #d2d2d2;
   border-radius: 20%;
+  visibility: 
 }
