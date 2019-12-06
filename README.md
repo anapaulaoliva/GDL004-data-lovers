@@ -65,15 +65,8 @@ PASS test/data.spec.js
     √ debería ser una función (1ms)
     √ debería retornar el último pokemon con primer letra: Z (361ms)
 
-------------------|----------|----------|----------|----------|-------------------|
-File              |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
-------------------|----------|----------|----------|----------|-------------------|
-All files         |      100 |    71.43 |      100 |      100 |                   |
- src              |      100 |    71.43 |      100 |      100 |                   |
-  data.js         |      100 |    71.43 |      100 |      100 |       24,33,47,56 |
- src/data/pokemon |        0 |        0 |        0 |        0 |                   |
-  pokemon.js      |        0 |        0 |        0 |        0 |                   |
-------------------|----------|----------|----------|----------|-------------------|
+
+![testing](https://user-images.githubusercontent.com/56927809/70346281-97ec7700-1823-11ea-82ef-88eba56c1756.JPG)
 
 
 ## Feedback :speech_balloon:
