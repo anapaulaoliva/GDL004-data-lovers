@@ -1,14 +1,6 @@
 
-//importar la data
 import POKEMON from './data/pokemon/pokemon.js';
-//construir la funcion de filtrado que se exportara despues
-// declarar que se exportara
-// nombre de la funcion
-// parametro de JSON . filter
-//entre parentesis el callback, que es la funcion que nos
-//permitira hacer algo con el filtrado por medio de parametros
-//parametro pokemones
-//callback retorna verdadero o falso
+
 
 export const filtradoPokemones = (POKEMON, evento) => {
   return POKEMON.filter((pokemones) => {
@@ -49,7 +41,7 @@ export const pokemonesZA = (POKEMON, name) => {
       resultadoZA.push(POKEMON[name]);
     }
   }
-  
+
   resultadoZA.sort(function(a,b) {
     if (a.name > b.name ) {
       return -1;

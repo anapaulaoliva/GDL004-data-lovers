@@ -1,73 +1,63 @@
 import POKEMON from'./data/pokemon/pokemon.js';
 console.log(POKEMON);
-import { filtradoPokemones } from './data.js';
-import { pokemonesAZ } from './data.js';
-import { pokemonesZA } from './data.js';
+import { filtradoPokemones, pokemonesAZ, pokemonesZA } from './data.js';
 
 window.onload = () => {
-//const mostrarMenu = () => {
- //document.querySelector('.orderMenu').style.display="flex";
 
-//}
-//document.querySelector("#menu").addEventListener("mouseover", mostrarMenu);
 
-/*const ocultarMenu = () => {
- let orderMenu = document.querySelector('.orderMenu').style.display="none";
+const mostrarLista = (POKEMON, evento, listaAZ, listaZA) => {
 
-}
-document.querySelector(".orderMenu").addEventListener("mouseout", ocultarMenu);
-*/
-//funcion para que aparezca algo en el boton show
+  document.querySelector("#contenedor").innerHTML = '';
+  document.querySelector("#contenedor").style.display = 'flex';
+  document.querySelector('.paginaInicio').style.display="none"
+  document.querySelector('.topPokeContenedor').style.display="none";
 
-//  const existe = document.getElementById('.infoBoton');
-  const mostrarLista = (POKEMON, evento, listaAZ, listaZA) => {
-  //modificacion 2
-
-document.querySelector("#contenedor").innerHTML = '';
-document.querySelector("#contenedor").style.display = 'flex';
-document.querySelector('.paginaInicio').style.display="none"
-document.querySelector('.topPokeContenedor').style.display="none";
   POKEMON.map((pokemon) => {
     let card = document.createElement("div");
     const template = `
     <div class ="contenedor">
     <div class="card">
+    <span style="text-transform: uppercase;">${pokemon.name}</span>
     <span style="text-transform: uppercase;">${pokemon.type}</span>
     <img src="${pokemon.img}";/>
-    <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan"style="text-transform: uppercase;">${pokemon.name}</span></button>
+    <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
     </div>
     </div>
     `
     card.innerHTML = template;
-   document.querySelector("#contenedor").appendChild(card);
+
+    document.querySelector("#contenedor").appendChild(card);
   })
 };
-document.querySelector(".todos").addEventListener("click", () => {
-  mostrarLista(POKEMON);
-});
-//funcion para ordenar A-Z y Z-A
 
-document.querySelector(".A-Z").addEventListener("click", () => {
-  ordenarListaAZ();
+    document.querySelector(".todos").addEventListener("click", () => {
+    mostrarLista(POKEMON);
 });
+
+//funciones sort
+
+   document.querySelector(".A-Z").addEventListener("click", () => {
+   ordenarListaAZ();
+});
+
 const ordenarListaAZ = () => {
   let listaAZ;
   listaAZ = pokemonesAZ(POKEMON, name);
-  console.log(listaAZ);
+  //console.log(listaAZ);
   mostrarLista(listaAZ);
 };
-document.querySelector(".Z-A").addEventListener("click", () => {
+
+  document.querySelector(".Z-A").addEventListener("click", () => {
   ordenarListaZA();
 });
+
 const ordenarListaZA = () => {
   let listaZA;
   listaZA = pokemonesZA(POKEMON, name);
-  console.log(listaZA);
+  //console.log(listaZA);
   mostrarLista(listaZA);
 };
-//funcion para que se cree una lista que contiene los objetos
 
-//parametro e que es el evento
 document.getElementById('Bug').addEventListener('click', mostrarFiltrado);
 document.getElementById('Dragon').addEventListener('click', mostrarFiltrado);
 document.getElementById('Electric').addEventListener('click', mostrarFiltrado);
@@ -85,46 +75,49 @@ document.getElementById('Rock').addEventListener('click', mostrarFiltrado);
 document.getElementById('Water').addEventListener('click', mostrarFiltrado);
 
 function mostrarFiltrado(e) {
+
   document.querySelector("#contenedor").innerHTML = ' ';
   document.querySelector('#contenedor').style.display="flex";
   document.querySelector('.topPokeContenedor').style.display="none";
-//cuando se de click al event listener, se ira al elemento y obtendra el id de ese elemento.
-document.querySelector('.paginaInicio').style.display="none";
-const evento = e.target.id;
-console.log(evento);
-//ocultar la pagina de inicio al dar click a los pokemones
-//guardados todos los datos filtrados
-const pokemonesFiltrados = filtradoPokemones(POKEMON, evento);
-console.log(pokemonesFiltrados);
-//document.querySelector("#filtrado").innerHTML = ' ';
-pokemonesFiltrados.map((pokemonFiltrado) => {
+  document.querySelector('.paginaInicio').style.display="none";
+
+  const evento = e.target.id;
+  //console.log(evento);
+
+  const pokemonesFiltrados = filtradoPokemones(POKEMON, evento);
+   //console.log(pokemonesFiltrados);
+  pokemonesFiltrados.map((pokemonFiltrado) => {
   let card = document.createElement("div");
   const template = `
   <div class="contenedor">
   <div class="card">
-  <span style="text-transform: uppercase;">${pokemonFiltrado.name}</span>
-  <span style="text-transform: uppercase;">${pokemonFiltrado.type}</span>
-  <img class="imgCard" src="${pokemonFiltrado.img}";/>
-   <div class ="buttonLayout">
-   <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
-  </div>
+  <span id="nombrePokemon" style="text-transform: uppercase;">${pokemonFiltrado.name}</span>
+  <span id="tipoPokemon" style="text-transform: uppercase;">${pokemonFiltrado.type}</span>
+  <img id="imagenPokemon" src="${pokemonFiltrado.img}";/>
+  <span id="debilidadPokemon" hidden="hidden">${pokemonFiltrado.weaknesses}</span>
+  <span id="candyPokemon" hidden="hidden">${pokemonFiltrado.candy}</span>
+  <button id="infoBoton" class = "infoBoton"><span id="infoBotonSpan">+INFO</span></button>
   </div>
   </div>
   `
   card.innerHTML = template;
- document.querySelector("#contenedor").appendChild(card);
+
+  document.querySelector("#contenedor").appendChild(card);
+  document.getElementById('infoBoton').addEventListener("click", mostrarCardInd);
 
 });
 
 }
 
-//funcion para boton comenzar de la pagina de Inicio.
+//main page
+
 const mostrarTopPoke = () => {
  document.querySelector('.paginaInicio').style.display="none";
  document.querySelector('.topPokeContenedor').style.display="flex";
 
 }
-document.querySelector('#botonComenzar').addEventListener('click', mostrarTopPoke);
+
+ document.querySelector('#botonComenzar').addEventListener('click', mostrarTopPoke);
 
 const paginaInicio = () => {
   document.querySelector('.paginaInicio').style.display="flex";
@@ -134,8 +127,11 @@ const paginaInicio = () => {
   document.querySelector('#contenedor').style.display="none";
 
 }
+
 document.querySelector('#pokebola').addEventListener('click', paginaInicio);
+
 //slideshow
+
 var slideIndex = 0;
 showSlides();
 
@@ -156,49 +152,45 @@ function showSlides() {
   setTimeout(showSlides, 4000); // Change image every "" seconds
 }
 
+//menu desplegable
+
 const menu = document.getElementById('menu');
 menu.addEventListener('click', () => {
      document.getElementById('menuContainer').classList.toggle('active-menu');
 });
-//modificacion 3
-/*
+
+//cards
+
 const mostrarCardInd = () => {
-  let imagen = document.getElementById('imagenPokemon').innerText;
-  console.log(imagen);
-  let nombre = document.getElementById('nombrePokemon').innerText;
-  console.log(nombre);
-  let debilidad = document.getElementById('debilidadPokemon').innerText;
-  console.log(debilidad);
-  let candy = document.getElementById('candyPokemon').innerText;
-  console.log(candy);
-  let tipo = document.getElementById('tipoPokemon').innerText;
-  console.log(tipo);
+
+  let imagen = document.getElementById("imagenPokemon").src;
+  let nombre = document.getElementById("nombrePokemon").innerText;
+  let debilidad = document.getElementById("debilidadPokemon").innerText;
+  let candy = document.getElementById("candyPokemon").innerText;
+  let tipo = document.getElementById("tipoPokemon").innerText;
 
   let cardInd = document.createElement("div");
   cardInd.classList.add('cardIndividual');
   const template = `
-   <section id="paginaCardIndividual">
-    <div class="cardIndividual">
-     <img class="imgInd" src="${imagen}";/><br>
-     <span class="nameInd">Nombre: ${nombre}</span><br>
-     <span class="debilidadesInd">Debilidad: ${debilidad}</span><br>
-     <span class"dulceInd">${candy}</span><br>
-     <button class = "botonCerrar"><span id="botonCerrar">&times;</span></button>
-    </div>
-   <section/> `
-cardInd.innerHTML = template;
-document.querySelector("#muestraIndividual").appendChild(cardInd);
-document.querySelector('.botonCerrar').addEventListener('click',() => {
-  let cerrar = document.querySelector('.cardIndividual');
-  cerrar.parentNode.removeChild(cerrar);
-});
-//modificacion 1
-document.querySelector('.infoBoton').addEventListener('click', mostrarCardInd);
-}*/
+  <section id="paginaCardIndividual">
+  <div class="cardIndividual">
+  <img class="imgInd" src="${imagen}";/><br>
+  <span class="nameInd">${nombre}</span><br><br>
+  <span class="debilidadesInd">Debilidad: ${debilidad}</span><br><br>
+  <span class"dulceInd">Dulce:${candy}</span><br><br>
+  <button class = "botonCerrar"><span id="botonCerrar">&times;</span></button><br>
+  </div>
+  <section/> `
+  cardInd.innerHTML = template;
 
+   document.querySelector("#muestraIndividual").appendChild(cardInd);
+   document.querySelector('.botonCerrar').addEventListener("click", () => {
 
+    let cerrar = document.querySelector('.cardIndividual');
+    cerrar.parentNode.removeChild(cerrar);
 
-
+   });
+   }
 
 
 }
