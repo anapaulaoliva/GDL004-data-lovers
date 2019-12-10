@@ -4,7 +4,7 @@ import POKEMON from './data/pokemon/pokemon.js';
 export const cards = (POKEMON) => {
   document.querySelector("#contenedor").innerHTML = '';
   document.querySelector('.paginaInicio').style.display="none"
-document.querySelector('.topPokeContenedor').style.display="none";
+  document.querySelector('.topPokeContenedor').style.display="none";
   return POKEMON.map((pokemon) => {
     let card = document.createElement("div");
     const template = `
@@ -23,19 +23,26 @@ document.querySelector('.topPokeContenedor').style.display="none";
   });
 }
 
-export const cardIndividual = (some) => {
+export const cardIndividual = (pokemon) => {
+  console.log(pokemon)
     let cardInd = document.createElement("div");
     cardInd.classList.add('modal-content');
+    const objectNextEvolution = POKEMON[pokemon].next_evolution[0];
+    console.log(objectNextEvolution.num);
+    const infoNextEvolution = POKEMON[objectNextEvolution.num];
+    console.log(infoNextEvolution);
+    //const objectImgNextEvolution = POKEMON[pokemon].next_evolution[0];
     const template = `
-      <img class="imgInd ${POKEMON[some].type[0]}" src="${POKEMON[some].img}";/>
-      <span class="nameInd">${POKEMON[some].name}<hr></span>
+      <img class="imgInd ${POKEMON[pokemon].type[0]}" src="${POKEMON[pokemon].img}";/>
+      <span class="nameInd">${POKEMON[pokemon].name}<hr></span>
       <div class="dentro">
-      <span class="pesoInd"><span style="color: cornflowerblue">Peso:</span><br> ${POKEMON[some].weight}</span><br>
-      <span class="debilidadesInd"><span style="color:gold">Debilidades:</span><br> ${POKEMON[some].weaknesses}</span><br>
-      <span class="dulceInd"><span style="color: pink">Candy:</span><br> ${POKEMON[some].candy}</span><br>
-      <span class="nextEv"><span style="color: green">EVOLUCION:</span><br> ${POKEMON[some].next_evolution}</span><br>
+      <span class="pesoInd"><span style="color: cornflowerblue">Peso:</span><br> ${POKEMON[pokemon].weight}</span><br>
+      <span class="debilidadesInd"><span style="color:gold">Debilidades:</span><br> ${POKEMON[pokemon].weaknesses}</span><br>
+      <span class="dulceInd"><span style="color: pink">Candy:</span><br> ${POKEMON[pokemon].candy}</span><br>
+      <span class="nextEv"><span style="color: green">EVOLUCION:</span><br> ${objectNextEvolution.name}</span><br>
+      <span class="imgNextEv"></span>
       </div><br>
-      <button class = "botonCerrar ${POKEMON[some].type[0]}">&times;</button><br>
+      <button class = "botonCerrar ${POKEMON[pokemon].type[0]}">&times;</button><br>
        `
     cardInd.innerHTML = template;
     document.querySelector(".modal").appendChild(cardInd);
@@ -45,6 +52,12 @@ export const cardIndividual = (some) => {
       let cerrar = document.querySelector('.modal-content');
       cerrar.parentNode.removeChild(cerrar);
     });
+}
+export const agregarEvolucion = () => {
+
+}
+export const agregarImgNextEvolucion = () => {
+
 }
 
 export const filtradoPokemones = (POKEMON, evento) => {

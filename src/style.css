@@ -158,7 +158,7 @@ height: 800px;
   width: 100%;
   height: 60px;
   box-shadow: -1px 4px 8px rgb(107, 104, 98);
-  z-index: 3;
+  z-index: 1;
 }
 .logotipo{
   position: relative;
@@ -274,7 +274,7 @@ font-size: 1rem;
 color: #789189;
 text-shadow: 1px 1px 2px #d2d2d2;
 padding: .2em
-transition: transform 2s;
+/*transition: transform 2s;*/
 }
 .infoBoton:hover{
 color: #d2d2d2;
@@ -283,17 +283,17 @@ width: 100px;
 -moz-transition: width 2s;
 -o-transition: width  2s;
 transition:  2s;
--webkit-transform: rotate(-180deg); /* Safari */
-transform: rotate(180deg);
+/*-webkit-transform: rotate(-180deg);
+/*transform: rotate(180deg);*/
 }
-#infoBotonSpan{
+/*#infoBotonSpan{
   display: inline-block;
   transition: transform 2s;
   -webkit-transform: rotate(360deg);
 }
 #infoBotonSpan:hover{
 -webkit-transform: rotate(-180deg);
-}
+}*/
 .general-flex-container{
   display: flex;
   flex-direction: row;

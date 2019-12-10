@@ -1,5 +1,5 @@
 import POKEMON from './data/pokemon/pokemon.js';
-import {cardIndividual,cards,filtradoPokemones, pokemonesAZ, pokemonesZA} from './data.js';
+import {cardIndividual,cards,filtradoPokemones, pokemonesAZ, pokemonesZA, agregarEvolucion, agregarImgNextEvolucion} from './data.js';
 
 window.onload = () => {
 
