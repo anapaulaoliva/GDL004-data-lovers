@@ -1,5 +1,5 @@
 import POKEMON from './data/pokemon/pokemon.js';
-import {cardIndividual,cards,filtradoPokemones, pokemonesAZ, pokemonesZA, agregarEvolucion, agregarImgNextEvolucion} from './data.js';
+import {filtradoPokemones, pokemonesAZ, pokemonesZA } from './data.js';
 
 window.onload = () => {
 
@@ -35,14 +35,120 @@ document.querySelector('#pokebola').addEventListener('click', ()=> {
 	location.reload();
 });
 
-document.querySelector(".modal")
+document.querySelector(".modal");
 
-const mostrarTopPoke = () => {
- document.querySelector('.paginaInicio').style.display="none";
- document.querySelector('.topPokeContenedor').style.display="flex";
+document.querySelector('#botonComenzar').addEventListener('click', () => {
+  document.querySelector('.paginaInicio').style.display="none";
+  document.querySelector('.topPokeContenedor').style.display="flex";
+
+});
+/* Fin event listeners */
+/* Inicio de las funcionalidades del DOM */
+
+ const cards = (POKEMON) => {
+  document.querySelector("#contenedor").innerHTML = '';
+  document.querySelector('.paginaInicio').style.display="none"
+  document.querySelector('.topPokeContenedor').style.display="none";
+  return POKEMON.map((pokemon) => {
+    let card = document.createElement("div");
+    const template = `
+    <div class="card">
+    <span id="nombrePokemon" style="text-transform: uppercase;">${pokemon.name}</span>
+    <span id="tipoPokemon" style="text-transform: uppercase;">${pokemon.type}</span>
+    <img id="imagenPokemon" src="${pokemon.img}";/>
+    <span id="debilidadPokemon" hidden="hidden">${pokemon.weaknesses}</span>
+    <span id="candyPokemon" hidden="hidden">${pokemon.candy}</span>
+    <button id="${pokemon.id}" class = "infoBoton ${pokemon.type[0]}"><span id="infoBotonSpan">+INFO</span></button>
+    </div>
+    `
+    card.innerHTML = template;
+   document.querySelector("#contenedor").appendChild(card);
+
+  });
+}
+
+ const cardIndividual = (pokemon) => {
+  console.log(pokemon)
+    let cardInd = document.createElement("div");
+    cardInd.classList.add('modal-content');
+    const objectNextEvolution = POKEMON[pokemon].next_evolution[0];
+    console.log(objectNextEvolution.num);
+    const infoNextEvolution = POKEMON[objectNextEvolution.num];
+    console.log(infoNextEvolution);
+    //const objectImgNextEvolution = POKEMON[pokemon].next_evolution[0];
+    const template = `
+      <img class="imgInd ${POKEMON[pokemon].type[0]}" src="${POKEMON[pokemon].img}";/>
+      <span class="nameInd">${POKEMON[pokemon].name}<hr></span>
+      <div class="dentro">
+      <span class="pesoInd"><span style="color: cornflowerblue">Peso:</span><br> ${POKEMON[pokemon].weight}</span><br>
+      <span class="debilidadesInd"><span style="color:gold">Debilidades:</span><br> ${POKEMON[pokemon].weaknesses}</span><br>
+      <span class="dulceInd"><span style="color: pink">Candy:</span><br> ${POKEMON[pokemon].candy}</span><br>
+      <span class="nextEv"><span style="color: green">EVOLUCION:</span><br> ${objectNextEvolution.name}</span><br>
+      <span class="imgNextEv"></span>
+      </div><br>
+      <button class = "botonCerrar ${POKEMON[pokemon].type[0]}">&times;</button><br>
+       `
+    cardInd.innerHTML = template;
+    document.querySelector(".modal").appendChild(cardInd);
+    document.querySelector('.botonCerrar').addEventListener("click", () => {
+      let modal = document.querySelector(".modal");
+      modal.style.display = "none"
+      let cerrar = document.querySelector('.modal-content');
+      cerrar.parentNode.removeChild(cerrar);
+    });
+}
+const agregarEvolucion = () => {
 
 }
-document.querySelector('#botonComenzar').addEventListener('click', mostrarTopPoke);
+const agregarImgNextEvolucion = () => {
+
+}
+
+const filterType = (type) => {
+	let resultado = filtradoPokemones(POKEMON,type);
+	cards(resultado);
+	botonInfo();
+};
+
+const botonInfo = () => {
+	document.querySelectorAll('.infoBoton').forEach(boton => {
+  		boton.addEventListener('click', event => {
+  			//let nombre = document.getElementById("nombrePokemon").innerText;
+    		targetPokemon(event.currentTarget.id);
+  		});
+	});
+};
+
+const ordenarListaZA = () =>{
+	let resultado = pokemonesZA(POKEMON,name);
+	cards(resultado);
+	botonInfo();
+};
+
+const ordenarListaAZ = () => {
+	let resultado = pokemonesAZ(POKEMON, name);
+	cards(resultado);
+	botonInfo();
+};
+
+
+const mostrarLista = (POKEMON) => {
+	document.querySelector("#contenedor").innerHTML = '';
+	document.querySelector('.paginaInicio').style.display="none"
+	document.querySelector('.topPokeContenedor').style.display="none";
+	cards(POKEMON);
+	botonInfo();
+};
+
+const targetPokemon = (target) => {
+	//console.log("el id que busco es: " + pok);
+	let modal = document.querySelector(".modal")
+	modal.style.display = "block"
+	let index = POKEMON.findIndex(function(item, i){
+	  return item.id == target
+	});
+	cardIndividual(index);
+};
 
 var slideIndex = 0;
 showSlides();
@@ -61,53 +167,8 @@ function showSlides() {
   }
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 3000); // Change image every "" seconds
+  setTimeout(showSlides, 3000); // Cambiar imagen cada "x" segundos
 }
 
-const filterType = (type) => {
-	let resultado = filtradoPokemones(POKEMON,type);
-	cards(resultado);
-	working();
-};
-
-const working = () => {
-	document.querySelectorAll('.infoBoton').forEach(boton => {
-  		boton.addEventListener('click', event => {
-  			//let nombre = document.getElementById("nombrePokemon").innerText;
-    		pruebas(event.currentTarget.id);
-  		});
-	});
-};
-
-const ordenarListaZA = () =>{
-	let resultado = pokemonesZA(POKEMON,name);
-	cards(resultado);
-	working();
-};
-
-const ordenarListaAZ = () => {
-	let resultado = pokemonesAZ(POKEMON, name);
-	cards(resultado);
-	working();
-};
-
-
-const mostrarLista = (POKEMON) => {
-	document.querySelector("#contenedor").innerHTML = '';
-	document.querySelector('.paginaInicio').style.display="none"
-	document.querySelector('.topPokeContenedor').style.display="none";
-	cards(POKEMON);
-	working();
-};
-
-const pruebas = (pok) => {
-	//console.log("el id que busco es: " + pok);
-	let modal = document.querySelector(".modal")
-	modal.style.display = "block"
-	let index = POKEMON.findIndex(function(item, i){
-	  return item.id == pok
-	});
-	cardIndividual(index);
-};
 
 }
