@@ -52,7 +52,11 @@ Pokémon GO es una experiencia de juego internacional que cuenta con más de mil
 - [x] Menú desplegable y slider.
 
 
+<<<<<<< HEAD
 ## Testing (BDD)
+=======
+## Testing (BDD) 
+>>>>>>> 50129b3206fbc3cf421271b844c84718aa79f2e3
 
 PASS test/data.spec.js
   filtradoPokemones
