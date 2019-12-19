@@ -1,5 +1,6 @@
 
 import POKEMON from './data/pokemon/pokemon.js';
+
 export const filtradoPokemones = (POKEMON, evento) => {
   return POKEMON.filter((pokemones) => {
     if (pokemones.type.indexOf(evento) !== -1){
@@ -31,7 +32,7 @@ export const pokemonesZA = (POKEMON, name) => {
   let resultadoZA = [];
   for (name in POKEMON) {
     if (POKEMON.hasOwnProperty(name)){
-      console.log(POKEMON[name]);
+      //console.log(POKEMON[name]);
       resultadoZA.push(POKEMON[name]);
     }
   }
@@ -45,6 +46,6 @@ export const pokemonesZA = (POKEMON, name) => {
   .forEach(function(pokemonOrdenado){
     return pokemonOrdenado;
   });
-  console.log(resultadoZA);
+  //console.log(resultadoZA);
  return resultadoZA;
 }
