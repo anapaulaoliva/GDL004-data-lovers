@@ -8,44 +8,12 @@ export const filtradoPokemones = (POKEMON, evento) => {
     }
   });
 }
-export const pokemonesAZ = (POKEMON, name) => {
-  let resultadoAZ = [];
-  for (name in POKEMON) {
-    if (POKEMON.hasOwnProperty(name)) {
-      resultadoAZ.push(POKEMON[name]);
-    }
-  }
-  resultadoAZ.sort(function(a,b) {
-    if (a.name < b.name ) {
-      return -1;
-    } else if (a.name > b.name){
-      return 1;
-    }
-    })
-  .forEach(function(pokemonOrdenado){
-    return pokemonOrdenado;
-  });
-  //console.log(resultadoAZ);
-  return resultadoAZ;
-}
-export const pokemonesZA = (POKEMON, name) => {
-  let resultadoZA = [];
-  for (name in POKEMON) {
-    if (POKEMON.hasOwnProperty(name)){
-      //console.log(POKEMON[name]);
-      resultadoZA.push(POKEMON[name]);
-    }
-  }
-  resultadoZA.sort(function(a,b) {
-    if (a.name > b.name ) {
-      return -1;
-    } else if (a.name < b.name){
-      return 1;
-    }
-  })
-  .forEach(function(pokemonOrdenado){
-    return pokemonOrdenado;
-  });
-  //console.log(resultadoZA);
- return resultadoZA;
-}
+export const pokemonesAZ = (POKEMON) => POKEMON.sort((a, b) => a.name.localeCompare(b.name));
+
+export const pokemonesZA = (POKEMON) => POKEMON.reverse((a,b) => a.name.localeCompare(b.name));
+
+export const pokemonesW = (POKEMON) => POKEMON.sort((a, b) => {return a.weight-b.weight});
+
+export const pokemonesWw = (POKEMON) => POKEMON.sort((a, b) => {return b.weight-a.weight});
+
+export const pokemonesH = (POKEMON) => POKEMON.sort((a, b) => {return a.height-b.height});

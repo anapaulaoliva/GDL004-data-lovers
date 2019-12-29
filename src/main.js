@@ -1,8 +1,7 @@
 import POKEMON from './data/pokemon/pokemon.js';
-import {filtradoPokemones, pokemonesAZ, pokemonesZA } from './data.js';
+import {filtradoPokemones, pokemonesAZ, pokemonesZA, pokemonesW, pokemonesH, pokemonesWw } from './data.js';
 
 window.onload = () => {
-
 /* menu todos*/
 document.querySelector("#menu").addEventListener("click", () => {
   mostrarTodos(POKEMON);
@@ -45,6 +44,7 @@ let arregloPokemon = [];
     <span id="nombrePokemon" style="font-size: 1.5rem; text-transform: uppercase;">${pokemon.name}</span>
     <span id="tipoPokemon" style="text-transform: uppercase; color:#BFB6BC">${pokemon.type}</span>
     <img id="imagenPokemon" src="${pokemon.img}";/>
+    <span id="pesoPokemon" hidden="hidden">${pokemon.weight}</span>
     <span id="debilidadPokemon" hidden="hidden">${pokemon.weaknesses}</span>
     <span id="candyPokemon" hidden="hidden">${pokemon.candy}</span>
     <button id="${pokemon.id}" class = "infoBoton ${pokemon.type[0]}"><span id="infoBotonSpan">+INFO</span></button>
@@ -62,20 +62,28 @@ const mostrarSort = () => {
   let sort = document.createElement("div");
   sort.classList.add("contenedorSort");
     const sortemplate = `
+    <button class="filtroPeso"><i class="material-icons">fitness_center</i></button>
     <button class="sortA"><i id="sortA" class="material-icons">text_rotate_vertical</i></button>
+
     <button class="sortB"><i id="sortB"class="material-icons">format_bold</i></button>
+    <button class="filtroAltura"><i class="material-icons">height</i></button>
+
       `
   sort.innerHTML = sortemplate;
   document.querySelector(".contenedor").appendChild(sort);
   document.querySelector(".sortA").addEventListener("click", () => {
-    //console.log(arregloPokemon);
     ordenarListaAZ(arregloPokemon);
   });
-  document.querySelector(".sortB").addEventListener("click", () =>{
+  document.querySelector(".sortB").addEventListener("click", () => {
     ordenarListaZA(arregloPokemon);
   });
-}
-
+  document.querySelector(".filtroPeso").addEventListener("click", () => {
+    ordenarListaW(arregloPokemon,1);
+  });
+  document.querySelector(".filtroAltura").addEventListener("click", () => {
+    ordenarListaH(arregloPokemon);
+  });
+ }
 };
 
  const mostrarModal = (pokemon) => {
@@ -91,9 +99,12 @@ const mostrarSort = () => {
           <span class="typeInd">${POKEMON[pokemon].type[0]}</span>
       </uno>
       <dos>
-          <span class="pesoInd"><span style="color: cornflowerblue">Peso:</span><br> ${POKEMON[pokemon].weight}</span><br>
-          <span class="debilidadesInd"><span style="color:gold">Debilidades:</span><br> ${POKEMON[pokemon].weaknesses}</span><br>
-          <span class="dulceInd"><span style="color: pink">Candy:</span><br> ${POKEMON[pokemon].candy}</span><br></div>
+        <tres>
+          <span class="pesoInd" style="font-size: 2rem;">${POKEMON[pokemon].height}<br><span style="color: cornflowerblue; font-size:1rem;">Altura</span></span>
+          <span class="alturaInd" style="font-size: 2rem;">${POKEMON[pokemon].weight} KG<br><span style="color: yellowgreen; font-size:1rem;">Peso</span></span><br>
+        </tres>
+          <span class="debilidadesInd" style="font-size: 1.5rem;"><span style="color:gold; font-size:1rem;">Debilidades</span><br>${POKEMON[pokemon].weaknesses}</span><br>
+          <span class="dulceInd"><span style="color: pink">Candy</span><br> ${POKEMON[pokemon].candy}<br></span><br></div>
           <nextEvolution></nextEvolution>
       </dos>
        `
@@ -121,8 +132,9 @@ const agregarEvolucion = (pokemon) => {
     });
     const nextEvolution = document.querySelector("nextEvolution");
     const template =`
-    <span class="nextEvolution"><span style="color: green">EVOLUCIÓN:</span><br> ${nameNextEvolution}</span><br>
+    <span style="color: orange; font-size: 1.5em; margin-top:.5em;">PATH DE EVOLUCIÓN</span><br>
     <img class="nextEvolutionImg" src="${POKEMON[index].img}";/>
+    <span class="nextEvolution" style="font-size:13px">${nameNextEvolution}</span>
     `
     nextEvolution.innerHTML = template;
   }
@@ -142,6 +154,38 @@ const botonInfo = () => {
   		targetPokemon(event.currentTarget.id);
   		});
 	});
+};
+
+const ordenarListaW = (arreglo,quevoyahacer) => {
+  for (let i=0; i<arreglo.length; i++) {
+    let pesoP = parseFloat(arreglo[i]["weight"]);
+    if(arreglo[i]["weight"] != pesoP) {
+      arreglo[i]["weight"] = pesoP;
+    }
+  }
+  if(quevoyahacer === 1){
+    let resultado = pokemonesW(arreglo);
+    mostrarCard(resultado);
+    botonInfo();
+}else {
+  let resultado = pokemonesWw(arreglo);
+  mostrarCard(resultado);
+  botonInfo();
+}
+
+};
+
+const ordenarListaH = (arreglo) => {
+
+  for (let i=0; i<arreglo.length; i++) {
+    let alturaP = parseFloat(arreglo[i]["height"]);
+    if(arreglo[i]["height"] != alturaP) {
+      arreglo[i]["height"] = alturaP;
+    }
+  }
+  let resultado = pokemonesH(arreglo);
+  mostrarCard(resultado);
+  botonInfo();
 };
 
 const ordenarListaAZ = (arreglo) => {

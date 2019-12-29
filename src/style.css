@@ -166,15 +166,19 @@ height: 800px;
   flex-flow:
 }
 .card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  text-align: center;
   width: 8em;
   height: 8em;
   padding: 5em;
   margin: 1em;
-  text-align: center;
+  font-family: 'Open Sans';
   color: #d2d2d2;
   text-shadow: 3px 3px 5px #d2d2d2;
-  font-family: 'Open Sans';
-  flex-wrap: wrap;
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 5px 5px 5px #d2d2d2;
   border-radius: 20%;
@@ -237,7 +241,7 @@ uno{
   justify-content: center;
   align-items: center;
   padding: 2em;
-  margin-left: 1.5em; color:plum}
+  margin-left: 1.5em; color:plum; border-right: solid 1px #d2d2d2;}
 .imgInd{
   border-radius: 100em;
   width: 12em; height: 12em;
@@ -254,13 +258,19 @@ dos{
   display: flex;
   flex-flow: wrap column;
   text-transform: uppercase;
-  padding: 2em;
+  padding: 1em;
   margin-right: 1.5em;
   text-align: center;
   font-size: 1rem;
   color: #d2d2d2;
 }
-.nextEvolutionImg{max-width: 7em;}
+tres{display: flex; flex-direction: row; justify-content: space-around; padding: .5em;}
+nextEvolution{
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  border-top: 1px solid #d2d2d2;}
+.nextEvolutionImg{max-width: 7em; align-self: center;}
 /*Intro comenzar */
 .general-flex-container{
   display: flex;
