@@ -157,7 +157,10 @@ height: 800px;
 .sortA:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
 .sortB{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A; transition: .5s;}
 .sortB:hover{font-size: 45px; color:#d2d2d2;text-shadow: 1px 1px 2px #333333}
-
+.filtroPeso{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A;transition: .5s;}
+.filtroPeso:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
+.filtroAltura{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A;transition: .5s;}
+.filtroAltura:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
 .contenedorCards{
   padding: .5em;
   display: flex;

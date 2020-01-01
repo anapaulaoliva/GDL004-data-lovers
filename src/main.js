@@ -1,6 +1,7 @@
 import POKEMON from './data/pokemon/pokemon.js';
 import {filtradoPokemones, pokemonesAZ, pokemonesZA, pokemonesW, pokemonesH, pokemonesWw } from './data.js';
-
+window.localStorage.setItem('SOME',JSON.stringify(POKEMON));
+//localstorage.setItem('some',POKEMON);
 window.onload = () => {
 /* menu todos*/
 document.querySelector("#menu").addEventListener("click", () => {
@@ -78,7 +79,7 @@ const mostrarSort = () => {
     ordenarListaZA(arregloPokemon);
   });
   document.querySelector(".filtroPeso").addEventListener("click", () => {
-    ordenarListaW(arregloPokemon,1);
+    ordenarListaW(arregloPokemon);
   });
   document.querySelector(".filtroAltura").addEventListener("click", () => {
     ordenarListaH(arregloPokemon);
@@ -100,8 +101,8 @@ const mostrarSort = () => {
       </uno>
       <dos>
         <tres>
-          <span class="pesoInd" style="font-size: 2rem;">${POKEMON[pokemon].height}<br><span style="color: cornflowerblue; font-size:1rem;">Altura</span></span>
-          <span class="alturaInd" style="font-size: 2rem;">${POKEMON[pokemon].weight} KG<br><span style="color: yellowgreen; font-size:1rem;">Peso</span></span><br>
+          <span class="pesoInd" style="font-size: 2rem;">${parseFloat(POKEMON[pokemon].height)} M<br><span style="color: cornflowerblue; font-size:1rem;">Altura</span></span>
+          <span class="alturaInd" style="font-size: 2rem;">${parseFloat(POKEMON[pokemon].weight)} KG<br><span style="color: yellowgreen; font-size:1rem;">Peso</span></span><br>
         </tres>
           <span class="debilidadesInd" style="font-size: 1.5rem;"><span style="color:gold; font-size:1rem;">Debilidades</span><br>${POKEMON[pokemon].weaknesses}</span><br>
           <span class="dulceInd"><span style="color: pink">Candy</span><br> ${POKEMON[pokemon].candy}<br></span><br></div>
@@ -156,27 +157,19 @@ const botonInfo = () => {
 	});
 };
 
-const ordenarListaW = (arreglo,quevoyahacer) => {
+const ordenarListaW = (arreglo) => {
   for (let i=0; i<arreglo.length; i++) {
     let pesoP = parseFloat(arreglo[i]["weight"]);
-    if(arreglo[i]["weight"] != pesoP) {
+    if (arreglo[i]["weight"] != pesoP) {
       arreglo[i]["weight"] = pesoP;
     }
   }
-  if(quevoyahacer === 1){
-    let resultado = pokemonesW(arreglo);
-    mostrarCard(resultado);
-    botonInfo();
-}else {
-  let resultado = pokemonesWw(arreglo);
+  let resultado = pokemonesW(arreglo);
   mostrarCard(resultado);
   botonInfo();
-}
-
 };
 
 const ordenarListaH = (arreglo) => {
-
   for (let i=0; i<arreglo.length; i++) {
     let alturaP = parseFloat(arreglo[i]["height"]);
     if(arreglo[i]["height"] != alturaP) {
