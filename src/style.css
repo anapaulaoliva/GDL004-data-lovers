@@ -76,6 +76,7 @@ height: 800px;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
 }
 
 #pokebola{
@@ -157,10 +158,15 @@ height: 800px;
 .sortA:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
 .sortB{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A; transition: .5s;}
 .sortB:hover{font-size: 45px; color:#d2d2d2;text-shadow: 1px 1px 2px #333333}
-.filtroPeso{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A;transition: .5s;}
-.filtroPeso:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
-.filtroAltura{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A;transition: .5s;}
-.filtroAltura:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
+.sortPesoA{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A;transition: .5s;}
+.sortPesoA:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
+.sortPesoB{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A;transition: .5s;}
+.sortPesoB:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
+.sortAlturaA{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A;transition: .5s;}
+.sortAlturaA:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
+.sortAlturaB{cursor: pointer; border: none; outline: none;font-size: 40px; color:#80797A;transition: .5s;}
+.sortAlturaB:hover{font-size: 45px; color:#d2d2d2; text-shadow: 1px 1px 2px #333333}
+
 .contenedorCards{
   padding: .5em;
   display: flex;
@@ -268,6 +274,12 @@ dos{
   color: #d2d2d2;
 }
 tres{display: flex; flex-direction: row; justify-content: space-around; padding: .5em;}
+prevEvolution{
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  border-top: 1px solid #d2d2d2;}
+.prevEvolutionImg{max-width: 7em; align-self: center;}
 nextEvolution{
   display: flex;
   flex-flow: column wrap;

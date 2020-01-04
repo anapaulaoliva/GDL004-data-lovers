@@ -1,8 +1,24 @@
 import POKEMON from './data/pokemon/pokemon.js';
-import {filtradoPokemones, pokemonesAZ, pokemonesZA, pokemonesW, pokemonesH, pokemonesWw } from './data.js';
-window.localStorage.setItem('SOME',JSON.stringify(POKEMON));
-//localstorage.setItem('some',POKEMON);
+
+import {filtradoPokemones, pokemonesAZ, pokemonesZA, pokemonesW, pokemonesH, pokemonesWw, pokemonesHh } from './data.js';
+
 window.onload = () => {
+
+  catchData()
+    .then(response => {
+      console.log('POKEMON-Data loaded');
+    })
+    .catch(error => {
+      console.log('Error!');
+      console.error(error);
+    });
+
+  async function catchData() {
+   const response = await fetch('https://raw.githubusercontent.com/Laboratoria/GDL004-data-lovers/master/src/data/pokemon/pokemon.json')
+   const POKEMON = await response.json();
+     console.log(POKEMON);
+  };
+
 /* menu todos*/
 document.querySelector("#menu").addEventListener("click", () => {
   mostrarTodos(POKEMON);
@@ -36,7 +52,7 @@ let arregloPokemon = [];
   document.querySelector(".contenedorCards").innerHTML = '';
   document.querySelector('.paginaInicio').style.display="none"
   document.querySelector('.topPokeContenedor').style.display="none";
-  //let arregloPokemon = POKEMONs.map(pokemon);
+
   return POKEMONs.map((pokemon) => {
     arregloPokemon.push(pokemon);
     let card = document.createElement("div");
@@ -63,11 +79,13 @@ const mostrarSort = () => {
   let sort = document.createElement("div");
   sort.classList.add("contenedorSort");
     const sortemplate = `
-    <button class="filtroPeso"><i class="material-icons">fitness_center</i></button>
+    <button class="sortPesoA"><i class="material-icons">- fitness_center</i></button>
+    <button class="sortPesoB"><i class="material-icons">+ fitness_center</i></button>
     <button class="sortA"><i id="sortA" class="material-icons">text_rotate_vertical</i></button>
 
     <button class="sortB"><i id="sortB"class="material-icons">format_bold</i></button>
-    <button class="filtroAltura"><i class="material-icons">height</i></button>
+    <button class="sortAlturaA"><i class="material-icons">- height</i></button>
+    <button class="sortAlturaB"><i class="material-icons">+ height</i></button>
 
       `
   sort.innerHTML = sortemplate;
@@ -78,10 +96,16 @@ const mostrarSort = () => {
   document.querySelector(".sortB").addEventListener("click", () => {
     ordenarListaZA(arregloPokemon);
   });
-  document.querySelector(".filtroPeso").addEventListener("click", () => {
+  document.querySelector(".sortPesoA").addEventListener("click", () => {
+    ordenarListaW(arregloPokemon,1);
+  });
+  document.querySelector(".sortPesoB").addEventListener("click", () => {
     ordenarListaW(arregloPokemon);
   });
-  document.querySelector(".filtroAltura").addEventListener("click", () => {
+  document.querySelector(".sortAlturaA").addEventListener("click", () => {
+    ordenarListaH(arregloPokemon,1);
+  });
+  document.querySelector(".sortAlturaB").addEventListener("click", () => {
     ordenarListaH(arregloPokemon);
   });
  }
@@ -118,11 +142,12 @@ const mostrarSort = () => {
       modal.style.visibility = "hidden";
       cerrar.parentNode.removeChild(cerrar);
     });
-    agregarEvolucion(pokemon);
+    agregarNextEvolucion(pokemon);
+    agregarPrevEvolucion(pokemon);
 }
 
 /*Mostrar Evolucion en la card Individual*/
-const agregarEvolucion = (pokemon) => {
+const agregarNextEvolucion = (pokemon) => {
   if (POKEMON[pokemon].next_evolution[0] !== ""){
     const objectNextEvolution = POKEMON[pokemon].next_evolution[0];
     const nameNextEvolution = objectNextEvolution.name;
@@ -139,8 +164,7 @@ const agregarEvolucion = (pokemon) => {
     `
     nextEvolution.innerHTML = template;
   }
-
-}
+};
 
 const filterType = (type) => {
 	let resultado = filtradoPokemones(POKEMON,type);
@@ -157,28 +181,40 @@ const botonInfo = () => {
 	});
 };
 
-const ordenarListaW = (arreglo) => {
+const ordenarListaW = (arreglo, quevoyahacer) => {
   for (let i=0; i<arreglo.length; i++) {
     let pesoP = parseFloat(arreglo[i]["weight"]);
     if (arreglo[i]["weight"] != pesoP) {
       arreglo[i]["weight"] = pesoP;
     }
   }
-  let resultado = pokemonesW(arreglo);
-  mostrarCard(resultado);
-  botonInfo();
+  if (quevoyahacer === 1){
+    let resultado = pokemonesW(arreglo);
+    mostrarCard(resultado);
+    botonInfo();
+  } else {
+    let resultado = pokemonesWw(arreglo);
+    mostrarCard(resultado);
+    botonInfo();
+    }
 };
 
-const ordenarListaH = (arreglo) => {
+const ordenarListaH = (arreglo, quevoyahacer) => {
   for (let i=0; i<arreglo.length; i++) {
     let alturaP = parseFloat(arreglo[i]["height"]);
     if(arreglo[i]["height"] != alturaP) {
       arreglo[i]["height"] = alturaP;
     }
   }
+  if (quevoyahacer === 1 ) {
   let resultado = pokemonesH(arreglo);
   mostrarCard(resultado);
   botonInfo();
+  } else {
+  let resultado = pokemonesHh(arreglo);
+  mostrarCard(resultado);
+  botonInfo();
+  }
 };
 
 const ordenarListaAZ = (arreglo) => {
