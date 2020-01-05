@@ -150,7 +150,7 @@ height: 800px;
 }
 .contenedorSort {
   padding: .5em;
-  display: flex;
+  display: none;
   width: 500px;
   justify-content: space-between;
 }
@@ -386,7 +386,21 @@ nextEvolution{
 .active, .dot:hover {
  background-color: cornflowerblue;
 }
-
+/************ grafica *************/
+.container{
+  display: none;
+  flex-flow: wrap column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+}
+canvas{
+  max-width: 40%;
+}
+#graficaTitulo {
+  color: #d2d2d2;
+  font-size: 1.5rem;
+}
 @-webkit-keyframes fade {
   from {opacity: .4}
   to {opacity: 1}

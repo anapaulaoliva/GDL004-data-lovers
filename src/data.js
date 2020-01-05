@@ -1,4 +1,4 @@
-//import POKEMON from './data/pokemon/pokemon.js';
+import POKEMON from './data/pokemon/pokemon.js';
 
 export const filtradoPokemones = (POKEMON, evento) => {
   return POKEMON.filter((pokemones) => {
@@ -18,3 +18,16 @@ export const pokemonesWw = (POKEMON) => POKEMON.sort((a, b) => {return b.weight-
 export const pokemonesH = (POKEMON) => POKEMON.sort((a, b) => {return a.height-b.height});
 
 export const pokemonesHh = (POKEMON) => POKEMON.sort((a, b) => {return b.height-a.height});
+
+export const sorting = (a,b) => {
+  const pokA = a.name.toUpperCase();
+  const pokB = b.name.toUpperCase();
+
+  let comparison = 0;
+  if (pokA > pokB) {
+    comparison = 1;
+  } else if ( pokA < pokB ) {
+    comparison = -1;
+  }
+  return comparison;
+}

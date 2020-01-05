@@ -22,6 +22,7 @@ window.onload = () => {
 /* menu todos*/
 document.querySelector("#menu").addEventListener("click", () => {
   mostrarTodos(POKEMON);
+    document.querySelector('.navegadorTipos').style.display="flex";
 });
 
 /* filtrado por tipo */
@@ -31,26 +32,37 @@ document.querySelectorAll('.tipos').forEach(boton => {
   });
 });
 
-document.querySelector('#pokebola').addEventListener('click', ()=> {
+document.querySelector('#pokebola').addEventListener('click', () => {
 	location.reload();
 });
 
-document.querySelector(".modal");
+document.querySelector('.logotipo').addEventListener('click', () => {
+
+    document.querySelector('.container').style.display="flex";
+    document.querySelector('.paginaInicio').style.display="none";
+    document.querySelector('.navegadorTipos').style.display="none";
+    document.querySelector('.contenedorSort').style.display="none";
+    document.querySelector('.contenedorCards').style.display="none";
+  });
 
 document.querySelector('#botonComenzar').addEventListener('click', () => {
+
   document.querySelector('.paginaInicio').style.display="none";
   document.querySelector('.topPokeContenedor').style.display="flex";
 
 });
 /* Fin event listeners */
 /* Inicio de las funcionalidades del DOM */
-let arregloPokemon = [];
+ let arregloPokemon = [];
  const mostrarCard = (POKEMONs) => {
    arregloPokemon = [];
   mostrarSort();
   //
   document.querySelector(".contenedorCards").innerHTML = '';
-  document.querySelector('.paginaInicio').style.display="none"
+  document.querySelector(".contenedorCards").style.display="flex";
+  document.querySelector(".contenedorSort").style.display="flex";
+  document.querySelector(".container").style.display="none";
+  document.querySelector('.paginaInicio').style.display="none";
   document.querySelector('.topPokeContenedor').style.display="none";
 
   return POKEMONs.map((pokemon) => {
@@ -145,6 +157,8 @@ const mostrarSort = () => {
     agregarNextEvolucion(pokemon);
     agregarPrevEvolucion(pokemon);
 }
+
+
 
 /*Mostrar Evolucion en la card Individual*/
 const agregarNextEvolucion = (pokemon) => {
