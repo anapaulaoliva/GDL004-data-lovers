@@ -1,9 +1,9 @@
 import POKEMON from './data/pokemon/pokemon.js';
-
 import {filtradoPokemones, pokemonesAZ, pokemonesZA, pokemonesW, pokemonesH, pokemonesWw, pokemonesHh } from './data.js';
+import { crearGrafica } from "./graph.js"
 
 window.onload = () => {
-
+/*
   catchData()
     .then(response => {
       console.log('POKEMON-Data loaded');
@@ -16,8 +16,7 @@ window.onload = () => {
   async function catchData() {
    const response = await fetch('https://raw.githubusercontent.com/Laboratoria/GDL004-data-lovers/master/src/data/pokemon/pokemon.json')
    const POKEMON = await response.json();
-     console.log(POKEMON);
-  };
+ }; */
 
 /* menu todos*/
 document.querySelector("#menu").addEventListener("click", () => {
@@ -41,8 +40,13 @@ document.querySelector('.logotipo').addEventListener('click', () => {
     document.querySelector('.container').style.display="flex";
     document.querySelector('.paginaInicio').style.display="none";
     document.querySelector('.navegadorTipos').style.display="none";
-    document.querySelector('.contenedorSort').style.display="none";
     document.querySelector('.contenedorCards').style.display="none";
+    contadorGrafica(POKEMON);
+    
+    let sort = document.querySelector('.contenedorSort') !== null;
+    if (sort) {
+      document.querySelector('.contenedorSort').style.display="none";
+    }
   });
 
 document.querySelector('#botonComenzar').addEventListener('click', () => {
@@ -155,7 +159,6 @@ const mostrarSort = () => {
       cerrar.parentNode.removeChild(cerrar);
     });
     agregarNextEvolucion(pokemon);
-    agregarPrevEvolucion(pokemon);
 }
 
 
@@ -282,4 +285,48 @@ function showSlides() {
   setTimeout(showSlides, 3000); // Change image every "" seconds
 };
 
+
+const contadorGrafica = (dataPokemon) => {
+
+  let labels = {
+    "Bug": 0,
+    "Dragon": 0,
+    "Electric": 0,
+    "Fighting": 0,
+    "Fire": 0,
+    "Flying": 0,
+    "Ghost": 0,
+    "Grass": 0,
+    "Ground": 0,
+    "Ice": 0,
+    "Normal": 0,
+    "Poison": 0,
+    "Psychic": 0,
+    "Rock": 0,
+    "Water": 0
+  };
+  for (let i=0; i < dataPokemon.length; i++) {
+    for (let j=0; j < dataPokemon[i].weaknesses.length; j++) {
+        switch (dataPokemon[i].weaknesses[j]){
+          case "Bug": labels.Bug++; break;
+          case "Dragon": labels.Dragon++; break;
+          case "Electric": labels.Electric++; break;
+          case "Fighting": labels.Fighting++; break;
+          case "Fire": labels.Fire++; break;
+          case "Flying": labels.Flying++; break;
+          case "Ghost": labels.Ghost++; break;
+          case "Grass": labels.Grass++; break;
+          case "Ground": labels.Ground++; break;
+          case "Ice": labels.Ice++; break;
+          case "Normal": labels.Normal++; break;
+          case "Poison": labels.Poison++; break;
+          case "Psychic": labels.Psychic++; break;
+          case "Rock": labels.Rock++; break;
+          case "Water": labels.Water++; break;
+       }
+     }
+   }
+   crearGrafica(labels);
+  //console.log(labels);
+  }
 }

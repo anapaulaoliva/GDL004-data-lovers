@@ -395,11 +395,7 @@ nextEvolution{
   padding-top: 80px;
 }
 canvas{
-  max-width: 40%;
-}
-#graficaTitulo {
-  color: #d2d2d2;
-  font-size: 1.5rem;
+  max-width: 70%;
 }
 @-webkit-keyframes fade {
   from {opacity: .4}

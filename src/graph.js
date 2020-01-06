@@ -1,13 +1,25 @@
-let ctx = document.getElementById("grafica");
-let tipos = ['Bug', 'Dragon','Electric','Fighting','Fire','Flying','Ghost','Grass','Ground','Ice','Normal','Poison','Psychic','Rock','Water'];
-let suma = [17,3,48,29,28,32,17,41,45,37,0,5,41,43,29]
-var myChart = new Chart(ctx, {
-    type: 'polarArea',
-    data: {
-        labels: tipos,
+import POKEMON from './data/pokemon/pokemon.js';
 
-        datasets: [{
-            data: suma,
+/********** Contador para Graph.js *******************/
+export const crearGrafica = (arregloWeaknesses) =>{
+
+  let ctx = document.getElementById("grafica");
+  let tipos = [];
+  let suma =[];
+  for (let key in arregloWeaknesses) {
+    if (arregloWeaknesses.hasOwnProperty(key)) {
+      suma.push(arregloWeaknesses[key]);
+      tipos.push(key);
+     }
+   }
+/********* Canvas Graph.js ********************/
+  new Chart(ctx, {
+      type: 'polarArea',
+      data: {
+        labels: tipos,
+        datasets: [
+          {
+            label: "Weaknesses",
             backgroundColor: [
                 'rgba(255, 99, 132, 3)',
                 'rgba(54, 162, 235, 3)',
@@ -48,9 +60,17 @@ var myChart = new Chart(ctx, {
                 'rgba(203, 207, 207, 2)',
                 'rgba(222, 243, 253, 2)'
             ],
-
-        }],
-        borderWidth: 3
-
-    }
-});
+            data: suma,
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Estadistica de tipos mas fuertes',
+          position: "bottom",
+          fontColor:"#d2d2d2"
+        }
+      }
+  });
+}
