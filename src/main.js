@@ -1,29 +1,22 @@
-import POKEMON from './data/pokemon/pokemon.js';
+//import POKEMON from './data/pokemon/pokemon.js';
 import {filtradoPokemones, pokemonesAZ, pokemonesZA, pokemonesW, pokemonesH, pokemonesWw, pokemonesHh } from './data.js';
 import { crearGrafica } from "./graph.js"
 
-window.onload = () => {
-/*
-  catchData()
-    .then(response => {
-      console.log('POKEMON-Data loaded');
-    })
-    .catch(error => {
-      console.log('Error!');
-      console.error(error);
-    });
+async function catchData() {
+ const response = await fetch('https://raw.githubusercontent.com/Laboratoria/GDL004-data-lovers/master/src/data/pokemon/pokemon.json')
+ const result = await response.json();
+ return result;
+};
 
-  async function catchData() {
-   const response = await fetch('https://raw.githubusercontent.com/Laboratoria/GDL004-data-lovers/master/src/data/pokemon/pokemon.json')
-   const POKEMON = await response.json();
- }; */
+window.onload = async () => {
+ var POKEMON = [];
+  POKEMON = (await catchData()).pokemon;
 
 /* menu todos*/
 document.querySelector("#menu").addEventListener("click", () => {
   mostrarTodos(POKEMON);
     document.querySelector('.navegadorTipos').style.display="flex";
 });
-
 /* filtrado por tipo */
 document.querySelectorAll('.tipos').forEach(boton => {
   boton.addEventListener('click', event => {
@@ -42,7 +35,7 @@ document.querySelector('.logotipo').addEventListener('click', () => {
     document.querySelector('.navegadorTipos').style.display="none";
     document.querySelector('.contenedorCards').style.display="none";
     contadorGrafica(POKEMON);
-    
+
     let sort = document.querySelector('.contenedorSort') !== null;
     if (sort) {
       document.querySelector('.contenedorSort').style.display="none";
@@ -141,12 +134,16 @@ const mostrarSort = () => {
       </uno>
       <dos>
         <tres>
-          <span class="pesoInd" style="font-size: 2rem;">${parseFloat(POKEMON[pokemon].height)} M<br><span style="color: cornflowerblue; font-size:1rem;">Altura</span></span>
+          <span class="pesoInd" style="font-size: 2rem;">${parseFloat(POKEMON[pokemon].height)} M<br><span style="color: cornflowerblue; font-size:1rem;">Altura</span></span><br>
+          <div style="visibility:hidden"> hello </div>
           <span class="alturaInd" style="font-size: 2rem;">${parseFloat(POKEMON[pokemon].weight)} KG<br><span style="color: yellowgreen; font-size:1rem;">Peso</span></span><br>
         </tres>
           <span class="debilidadesInd" style="font-size: 1.5rem;"><span style="color:gold; font-size:1rem;">Debilidades</span><br>${POKEMON[pokemon].weaknesses}</span><br>
           <span class="dulceInd"><span style="color: pink">Candy</span><br> ${POKEMON[pokemon].candy}<br></span><br></div>
-          <nextEvolution></nextEvolution>
+        <pathEvolution>
+        <span style="color: orange; font-size: 1.5em; margin-top:.5em;">PATH DE EVOLUCIÓN</span><br>
+          <arrayDeEvolucion></arrayDeEvolucion>
+        </pathEvolution>
       </dos>
        `
     cardInd.innerHTML = template;
@@ -158,30 +155,109 @@ const mostrarSort = () => {
       modal.style.visibility = "hidden";
       cerrar.parentNode.removeChild(cerrar);
     });
-    agregarNextEvolucion(pokemon);
+    agregarPathEvolucion(pokemon);
 }
+/*Mostrar Evoluciones en la card Individual*/
+const agregarPathEvolucion = (pokemon) => {
 
+let evolutionPathArray = [];
 
+ if("prev_evolution" in POKEMON[pokemon]){
+     evolutionPathArray = evolutionPathArray.concat(POKEMON[pokemon].prev_evolution
+         .map((elementArray) => {
+         let found = POKEMON.filter((element) => {
+             return element.name === elementArray.name;
+         });
+         return { "name": elementArray.name, "img": found ? found[0].img : ''};
+     }));/*
+     let indexPrev = POKEMON.findIndex(function(item, i){
+   	  return item.id == POKEMON[pokemon].prev_evolution[0];
+   	});
+    console.log(POKEMON[indexPrev].name);
+     */
+ }
+ evolutionPathArray = evolutionPathArray.concat([{
+     "name": POKEMON[pokemon].name,
+     "img": POKEMON[pokemon].img
+ }]);
 
-/*Mostrar Evolucion en la card Individual*/
-const agregarNextEvolucion = (pokemon) => {
-  if (POKEMON[pokemon].next_evolution[0] !== ""){
-    const objectNextEvolution = POKEMON[pokemon].next_evolution[0];
-    const nameNextEvolution = objectNextEvolution.name;
-    const numNextEvolution = objectNextEvolution.num;
-
-    let index = POKEMON.findIndex(function(item, i){
-      return item.id == numNextEvolution;
-    });
-    const nextEvolution = document.querySelector("nextEvolution");
-    const template =`
-    <span style="color: orange; font-size: 1.5em; margin-top:.5em;">PATH DE EVOLUCIÓN</span><br>
-    <img class="nextEvolutionImg" src="${POKEMON[index].img}";/>
-    <span class="nextEvolution" style="font-size:13px">${nameNextEvolution}</span>
-    `
-    nextEvolution.innerHTML = template;
-  }
-};
+ if("next_evolution" in POKEMON[pokemon]){
+     evolutionPathArray = evolutionPathArray.concat(POKEMON[pokemon].next_evolution
+         .map((elementArray) => {
+         let found = POKEMON.filter((element) => {
+             return element.name === elementArray.name;
+         });
+         return { "name": elementArray.name, "img": found ? found[0].img : ''};
+     }));
+     /*let nexp = POKEMON[pokemon].next_evolution
+     for(let j=0;j<nexp.length;j++){
+       let indexNext = POKEMON.findIndex(function(item, i){
+     	  return item.id == nexp[j].num;
+     	});
+      evolutionPathArray.push(indexNext):
+      console.log(POKEMON[indexNext].img);
+    }*/
+ }
+    //console.log(evolutionPathArray)
+    let posicionUno = document.querySelector('arrayDeEvolucion');
+      if (evolutionPathArray.length > 3) {
+        let template =`
+        <cuatro>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[0].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[0].name}</span><br>
+        </cuatro>
+        <cinco>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[1].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[1].name}</span><br>
+        </cinco>
+        <seis>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[2].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[2].name}</span>
+        </seis>
+        <siete>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[3].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[2].name}</span>
+        </siete>
+        `
+        posicionUno.innerHTML = template;
+      } else if (evolutionPathArray.length > 2) {
+        let template = `
+        <cuatro>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[0].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[0].name}</span><br>
+        </cuatro>
+        <cinco>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[1].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[1].name}</span><br>
+        </cinco>
+        <seis>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[2].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[2].name}</span>
+        </seis>
+        `
+        posicionUno.innerHTML = template;
+      } else if (evolutionPathArray.length == 2) {
+        let template = `
+        <cuatro>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[0].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[0].name}</span><br>
+        </cuatro>
+        <cinco>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[1].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[1].name}</span><br>
+        </cinco>
+        `
+        posicionUno.innerHTML = template;
+      } else if (evolutionPathArray.length == 1){
+        let template = `
+        <cuatro>
+        <img class="pathEvolutionImg" src="${evolutionPathArray[0].img}"/>
+        <span class="pathEvolutionName">${evolutionPathArray[0].name}</span>
+        </cuatro>
+        `
+        posicionUno.innerHTML = template;
+      }
+ };
 
 const filterType = (type) => {
 	let resultado = filtradoPokemones(POKEMON,type);
@@ -193,7 +269,7 @@ const filterType = (type) => {
 const botonInfo = () => {
 	document.querySelectorAll('.infoBoton').forEach(boton => {
   		boton.addEventListener('click', event => {
-  		targetPokemon(event.currentTarget.id);
+  		targetPokemon(event.currentTarget.id,POKEMON);
   		});
 	});
 };

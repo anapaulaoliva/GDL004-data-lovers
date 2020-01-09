@@ -267,25 +267,24 @@ dos{
   display: flex;
   flex-flow: wrap column;
   text-transform: uppercase;
+  align-content: center;
+  align-items: center;
   padding: 1em;
   margin-right: 1.5em;
   text-align: center;
   font-size: 1rem;
   color: #d2d2d2;
 }
-tres{display: flex; flex-direction: row; justify-content: space-around; padding: .5em;}
-prevEvolution{
-  display: flex;
-  flex-flow: column wrap;
-  text-align: center;
-  border-top: 1px solid #d2d2d2;}
-.prevEvolutionImg{max-width: 7em; align-self: center;}
-nextEvolution{
-  display: flex;
-  flex-flow: column wrap;
-  text-align: center;
-  border-top: 1px solid #d2d2d2;}
-.nextEvolutionImg{max-width: 7em; align-self: center;}
+tres{display: flex; flex-direction: row; justify-content: space-around;padding: .5em; align-content: center;}
+/* Path Evolucion section */
+pathEvolution{display: flex;display: flex; flex-flow: column wrap; text-align: center;border-top: 1px solid #d2d2d2;}
+arrayDeEvolucion{display: flex; flex-flow: wrap row; justify-content:center;}
+cuatro{;display: flex; flex-flow: wrap column;}
+cinco{;display: flex; flex-flow: wrap column;}
+seis{;display: flex; flex-flow: wrap column;}
+siete{;display: flex; flex-flow: wrap column;}
+.pathEvolutionImg{max-width: 6em; align-self: center;}
+
 /*Intro comenzar */
 .general-flex-container{
   display: flex;
