@@ -30,6 +30,7 @@ Pokémon GO es una experiencia de juego internacional que cuenta con más de mil
 ## MOODBOARD - Prototype :pencil2::paperclip:
 
 [POKE-DATALOVERS.pdf](https://github.com/SleekPanther/test/files/3918933/POKE-DATALOVERS.pdf)
+<<<<<<< HEAD
 
 ![dl1](https://user-images.githubusercontent.com/56927809/70095595-ca5f5f80-15ea-11ea-9cd2-d48f49382237.JPG)
 ![dl2](https://user-images.githubusercontent.com/56927809/70095600-cc292300-15ea-11ea-851a-8e8fc1bda4f9.JPG)
@@ -45,6 +46,49 @@ Pokémon GO es una experiencia de juego internacional que cuenta con más de mil
 - [x] Mostrar data filtrada.
 - [x] SortBy y SortBy reverse de la data.
 - [x] Menú desplegable y slider.
+=======
+
+![dl1](https://user-images.githubusercontent.com/56927809/70095595-ca5f5f80-15ea-11ea-9cd2-d48f49382237.JPG)
+![dl2](https://user-images.githubusercontent.com/56927809/70095600-cc292300-15ea-11ea-851a-8e8fc1bda4f9.JPG)
+![dl3](https://user-images.githubusercontent.com/56927809/70095601-cd5a5000-15ea-11ea-89a9-43e626d3c4ce.JPG)
+![dl4](https://user-images.githubusercontent.com/56927809/70095603-ce8b7d00-15ea-11ea-9082-341b2c53f2b1.JPG)
+
+
+###### Prototipo de Baja Fidelidad
+
+![LowFidPrototype](https://user-images.githubusercontent.com/56927809/70346203-5fe53400-1823-11ea-81d5-a3e268b18691.JPG)
+
+###### (Adobe DX)
+
+![Prototype](https://user-images.githubusercontent.com/56927809/70095477-76547b00-15ea-11ea-8017-1e136ec5cf36.JPG)
+
+
+## Funcionalidades de la WebApp Pokedx :sparkles:
+- [x] Mostrar data filtrada.
+- [x] SortBy y SortBy reverse de la data.
+- [x] Menú desplegable y slider.
+
+
+<<<<<<< HEAD
+## Testing (BDD)
+=======
+## Testing (BDD) 
+>>>>>>> 50129b3206fbc3cf421271b844c84718aa79f2e3
+
+PASS test/data.spec.js
+  filtradoPokemones
+    √ debería ser una función (5ms)
+    √ debería retornar el filtradoPokemones con type: Grass (1ms)
+  pokemonesAZ
+    √ debería ser una función (1ms)
+    √ debería retornar el primer pokemon con primer letra: A (2ms)
+  pokemonesZA
+    √ debería ser una función (1ms)
+    √ debería retornar el último pokemon con primer letra: Z (361ms)
+
+
+![testing](https://user-images.githubusercontent.com/56927809/70346281-97ec7700-1823-11ea-82ef-88eba56c1756.JPG)
+>>>>>>> f6890944e9f05b829a9d8fc9bcb26eaea82f7ac5
 
 
 ## Feedback :speech_balloon:

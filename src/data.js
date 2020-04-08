@@ -1,14 +1,4 @@
-
-//importar la data
 import POKEMON from './data/pokemon/pokemon.js';
-//construir la funcion de filtrado que se exportara despues
-// declarar que se exportara
-// nombre de la funcion
-// parametro de JSON . filter
-//entre parentesis el callback, que es la funcion que nos
-//permitira hacer algo con el filtrado por medio de parametros
-//parametro pokemones
-//callback retorna verdadero o falso
 
 export const filtradoPokemones = (POKEMON, evento) => {
   return POKEMON.filter((pokemones) => {
@@ -17,45 +7,27 @@ export const filtradoPokemones = (POKEMON, evento) => {
     }
   });
 }
-export const pokemonesAZ = (POKEMON, name) => {
-  let resultadoAZ = [];
-  for (name in POKEMON) {
-    if (POKEMON.hasOwnProperty(name)) {
-      //console.log(POKEMON[name]);
-      resultadoAZ.push(POKEMON[name]);
-    }
+export const pokemonesAZ = (POKEMON) => POKEMON.sort((a, b) => a.name.localeCompare(b.name));
+
+export const pokemonesZA = (POKEMON) => POKEMON.sort((a,b) => b.name.localeCompare(a.name));
+
+export const pokemonesW = (POKEMON) => POKEMON.sort((a, b) => {return a.weight-b.weight});
+
+export const pokemonesWw = (POKEMON) => POKEMON.sort((a, b) => {return b.weight-a.weight});
+
+export const pokemonesH = (POKEMON) => POKEMON.sort((a, b) => {return a.height-b.height});
+
+export const pokemonesHh = (POKEMON) => POKEMON.sort((a, b) => {return b.height-a.height});
+
+export const sorting = (a,b) => {
+  const pokA = a.name.toUpperCase();
+  const pokB = b.name.toUpperCase();
+
+  let comparison = 0;
+  if (pokA > pokB) {
+    comparison = 1;
+  } else if ( pokA < pokB ) {
+    comparison = -1;
   }
-  resultadoAZ.sort(function(a,b) {
-    if (a.name < b.name ) {
-      return -1;
-    } else if (a.name > b.name){
-      return 1;
-    }
-    })
-  .forEach(function(pokemonOrdenado){
-    return pokemonOrdenado;
-  });
-  //console.log(resultadoAZ);
-  return resultadoAZ;
-}
-export const pokemonesZA = (POKEMON, name) => {
-  let resultadoZA = [];
-  for (name in POKEMON) {
-    if (POKEMON.hasOwnProperty(name)){
-      console.log(POKEMON[name]);
-      resultadoZA.push(POKEMON[name]);
-    }
-  }
-  resultadoZA.sort(function(a,b) {
-    if (a.name > b.name ) {
-      return -1;
-    } else if (a.name < b.name){
-      return 1;
-    }
-  })
-  .forEach(function(pokemonOrdenado){
-    return pokemonOrdenado;
-  });
-  console.log(resultadoZA);
- return resultadoZA;
+  return comparison;
 }
